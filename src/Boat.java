@@ -21,7 +21,7 @@ class Boat {
     public double getPrice() {
         return price;
     }
-    public int getType() {
+    public String getType() {
         return type;
     }
 
