@@ -4,6 +4,7 @@ import java.util.Scanner;
 class BoatAssembly {
     Scanner input = new Scanner(System.in);
     Boat boats = new Boat();
+    Room rooms = new Room();
     Motor motors = new Motor();
     Wheel wheels = new Wheel();
     primaryColor primaryColors = new primaryColor();
@@ -40,15 +41,19 @@ class BoatAssembly {
             boolean addParts = true;
             while (addParts) {
                 System.out.printf("\n\nEnter the name of the part you want to add \n\n" +
-                        "- Motor | Options: Engine, Type\n" +
-                        "- Wheel | Options: Material, Type\n" +
-                        "- Primary Color\n" +
-                        "- Secondary Color\n" +
-                        "- Exhaust | Options: Type, Length\n\n" +
-                        "Type 'done' to finish.\n\n" +
-                        "Your input: ");
+                    "- Room | Options: Amount, Type, Theme\n" +
+                    "- Motor | Options: Engine, Type\n" +
+                    "- Wheel | Options: Material, Type\n" +
+                    "- Primary Color\n" +
+                    "- Secondary Color\n" +
+                    "- Exhaust | Options: Type, Length\n\n" +
+                    "Type 'done' to finish.\n\n" +
+                    "Your input: ");
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
+                    case "room":
+                        rooms.selectRoom();
+                        break;
                     case "motor":
                         motors.selectMotor();
                         break;
@@ -150,8 +155,6 @@ class BoatAssembly {
                 }
             }
         }
-
-        
     }
 
     public void boatSummary() {
@@ -159,6 +162,10 @@ class BoatAssembly {
         customer.getCustomerInfo();
         System.out.printf("Boat: %s ($%.2f)%n", selectedBoat.getName(), selectedBoat.getPrice());
         double totalCost = selectedBoat.getPrice();
+        for (Room room : rooms.getRooms()) {
+            totalCost+=1200;
+            System.out.println("Room - Amount: " + room.getAmount() + ", Type: " + room.getType() + ", Theme: " + room.getTheme() + " ($1200)");
+        }
         for (Motor motor : motors.getMotor()) {
             totalCost+=200;
             System.out.println("Motor - Type: " + motor.getType() + ", Instrument: " + motor.getInstrument() + " ($200)");

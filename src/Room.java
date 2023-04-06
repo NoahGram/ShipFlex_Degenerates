@@ -8,37 +8,35 @@ class Room {
     private int amount;
     private ArrayList<Room> rooms = new ArrayList<Room>();
     
-    Room() {
-        rooms.add(new Room("Cabin", "Normal"));
-        rooms.add(new Room("Suite", "Normal"));
-        rooms.add(new Room("Stateroom", "Normal"));
-    }
-    Room(String theme, String type) {
-        this.theme = theme;
+    Room() {}
+    Room(int amount, String type, String theme) {
+        this.amount = amount;
         this.type = type;
+        this.theme = theme;
     }
 
     public void selectRoom() {
         System.out.printf("\nEnter the amount of rooms you want (Max 5): \n");
         amount = input.nextInt();
+        input.nextLine();
         for(int i = 0; i<amount; i++) {
-            System.out.printf("\nEnter the room type your want \n\n" +
-                "$200,- Toyato \n" +
-                "$ 75,- Ferrari \n" +
-                "$115,- Bugatti \n" +
-                "$115,- Mercedis \n" +
+            System.out.println("\nEnter the room type your want \n\n" +
+                "Cabin \n" +
+                "Suite \n" +
+                "Stateroom \n" +
+                "Kitchen \n" +
+                "Theater \n" +
                 "Type 'done' to finish.\n\n" +
                 "Your input: ");
             String roomType = input.nextLine();
-            System.out.printf("\nEnter the motor you want to add \n\n" +
-                "$200,- Toyato \n" +
-                "$ 75,- Ferrari \n" +
-                "$115,- Bugatti \n" +
-                "$115,- Mercedis \n" +
+            System.out.println("\nEnter the room theme \n\n" +
+                "Classic \n" +
+                "Deluxe \n" +
+                "Luxury \n" +
                 "Type 'done' to finish.\n\n" +
                 "Your input: ");
             String RoomTheme = input.nextLine();
-            setRooms(new Room(roomType, RoomTheme));
+            setRooms(new Room(amount, roomType, RoomTheme));
         }
     }
 
@@ -56,6 +54,14 @@ class Room {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public ArrayList<Room> getRooms() {
