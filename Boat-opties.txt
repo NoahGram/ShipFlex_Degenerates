@@ -1,0 +1,36 @@
+High:
+The Orion Yacht (200 M): 6000000
+The Pisces Yacht (250 M): 7000000
+Aquarius Yacht (300 M): 8000000
+Super Galaxy Yacht (500 M): 12000000
+--------------------
+Options:
+- Rooms: Cabin, Suite, Stateroom
+- Helipad
+- Hot Tub
+- Tipping Bucket
+- Jetski: Amount
+- Kitchen: Styling
+- Theater: Styling
+- Lighting: Color
+- Flag: Country
+- Primary/Secondary Color
+- Wheel
+
+Medium:
+Type:
+- Service: Tugboat - Towboat
+- Normal: Sailboat - Cruiser
+-----------------
+- Kitchen: Styling
+- Motor
+- Primary/Secondary Color
+- Wheel
+- Exhaust
+
+Low:
+Speedboat - Gameboat - Deckboat - Lifeboat
+- Motor
+- Primary/Secondary Color
+- Wheel
+- Exhaust
