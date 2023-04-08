@@ -1,32 +1,39 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+
+
 class BoatAssembly {
     Scanner input = new Scanner(System.in);
-    Boat boats = new Boat();
-    Room rooms = new Room();
-    Motor motors = new Motor();
+    BoatList boatList = new BoatList();
+    RoomSelector roomSelector = new RoomSelector();
     Wheel wheels = new Wheel();
     primaryColor primaryColors = new primaryColor();
     secondaryColor secondaryColors = new secondaryColor();
     Exhaust exhausts = new Exhaust();
     Customer customer = new Customer();
+    MotorSelector motorSelector = new MotorSelector();
+
+
+
     Boat selectedBoat = null;
+
 
     public void boatAssemble() {
         System.out.println("\nBoat Assembly Program\n----------------------");
 
         System.out.println("Available boats:");
-        for (Boat boat : boats.getBoats()) {
-            System.out.printf("%s ($%.2f)\n", boat.getName(), boat.getPrice());
+        for (BoatType boatType : boatList.getBoatTypes()) {
+            System.out.printf("%s ($%.2f)\n", boatType.getName(), boatType.getPrice());
         }
 
         System.out.print("\nEnter the name of the boat you want to assemble: ");
-        String boatName = input.nextLine();
+        String boatTypeName = input.nextLine();
         selectedBoat = null;
-        for (Boat boat : boats.getBoats()) {
-            if (boat.getName().equalsIgnoreCase(boatName)) {
-                selectedBoat = boat;
+        for (BoatType boatType : boatList.getBoatTypes()) {
+            if (boatType.getName().equalsIgnoreCase(boatTypeName)) {
+                selectedBoat = new Boat(boatType);
                 break;
             }
         }
@@ -36,7 +43,7 @@ class BoatAssembly {
             return;
         }
 
-        if(selectedBoat.getType() == "High") {
+        if (selectedBoat.getBoatType().getType() == "High") {
             System.out.println("Boat Type = High");
             boolean addParts = true;
             while (addParts) {
@@ -52,10 +59,10 @@ class BoatAssembly {
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
                     case "room":
-                        rooms.selectRoom();
+                        selectedBoat.AddOption(roomSelector.selectRoom(selectedBoat.getBoatType()));
                         break;
                     case "motor":
-                        motors.selectMotor();
+                        selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
                         break;
                     case "wheel":
                         wheels.selectWheel();
@@ -78,7 +85,7 @@ class BoatAssembly {
                         break;
                 }
             }
-        }else if(selectedBoat.getType() == "Medium") {
+        }else if(selectedBoat.getBoatType().getType() == "Medium") {
             System.out.println("Boat Type = Medium");
             boolean addParts = true;
             while (addParts) {
@@ -93,7 +100,7 @@ class BoatAssembly {
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
                     case "motor":
-                        motors.selectMotor();
+                        selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
                         break;
                     case "wheel":
                         wheels.selectWheel();
@@ -116,7 +123,7 @@ class BoatAssembly {
                         break;
                 }
             }
-        }else if(selectedBoat.getType() == "Low") {
+        }else if(selectedBoat.getBoatType().getType() == "Low") {
             System.out.println("Boat Type = Low");
             boolean addParts = true;
             while (addParts) {
@@ -131,7 +138,7 @@ class BoatAssembly {
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
                     case "motor":
-                        motors.selectMotor();
+                        selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
                         break;
                     case "wheel":
                         wheels.selectWheel();
@@ -158,16 +165,19 @@ class BoatAssembly {
     }
 
     public void boatSummary() {
+        double totalCost = selectedBoat.getTotalCost();
+        
         System.out.println("\nBoat Assembly Summary:");
         customer.getCustomerInfo();
-        System.out.printf("Boat: %s ($%.2f)%n", selectedBoat.getName(), selectedBoat.getPrice());
-        double totalCost = selectedBoat.getPrice();
-        for (Room room : rooms.getRooms()) {
+/*         System.out.printf("Boat: %s ($%.2f)%n", selectedBoat.getName(), selectedBoat.getPrice());
+        totalCost = selectedBoat.getPrice();
+ */        
+/*         for (Room room : rooms.getRooms()) {
             totalCost+=1200;
             System.out.println("Room - Amount: " + room.getAmount() + ", Type: " + room.getType() + ", Theme: " + room.getTheme() + " ($1200)");
         }
         for (Motor motor : motors.getMotor()) {
-            totalCost+=200;
+            totalCost+=200;                                                                                                                                                                                                                                                                                                                     
             System.out.println("Motor - Type: " + motor.getType() + ", Instrument: " + motor.getInstrument() + " ($200)");
         }
         for (Wheel wheel : wheels.getWheel()) {
@@ -186,6 +196,6 @@ class BoatAssembly {
             totalCost+=50;
             System.out.println("Exhaust - Type: " + exhaust.getType() + ", Length: " + exhaust.getLength() + " ($50)");
         }
-        System.out.printf("Total Cost: $%.2f%n", totalCost);
+ */        System.out.printf("Total Cost: $%.2f%n", totalCost);
     }
 }
