@@ -34,6 +34,18 @@ class SteeringWheelType extends BoatOption {
     }
 }
 
+class ExhaustType extends BoatOption {
+    ExhaustType(String name, double price) {
+        super("Exhaust", name, price);
+    }
+}
+
+class ColorType extends BoatOption {
+    ColorType(String name, double price) {
+        super("Color", name, price);
+    }
+}
+
 class RoomType extends BoatOption {
     RoomType(String name, double price) {
         super("Room", name, price);
@@ -47,6 +59,8 @@ class BoatType {
 
     private ArrayList<MotorType> motorTypes = new ArrayList<MotorType>();
     private ArrayList<SteeringWheelType> steeringWheelTypes = new ArrayList<SteeringWheelType>();
+    private ArrayList<ExhaustType> exhaustTypes = new ArrayList<ExhaustType>();
+    private ArrayList<ColorType> colorTypes = new ArrayList<ColorType>();
     private ArrayList<RoomType> roomTypes = new ArrayList<RoomType>();
 
     BoatType(String name, double price, String type) {
@@ -61,6 +75,14 @@ class BoatType {
 
     public void AddSteeringWheel(SteeringWheelType boatOption) {
         steeringWheelTypes.add(boatOption);
+    }
+
+    public void AddExhaust(ExhaustType boatOption) {
+        exhaustTypes.add(boatOption);
+    }
+
+    public void AddColor(ColorType boatOption) {
+        colorTypes.add(boatOption);
     }
 
     public void AddRoom(RoomType roomType) {
@@ -85,6 +107,18 @@ class BoatType {
 
     public ArrayList<MotorType> getMotorTypes() {
         return motorTypes;
+    }
+
+    public ArrayList<SteeringWheelType> getWheelTypes() {
+        return steeringWheelTypes;
+    }
+
+    public ArrayList<ExhaustType> getExhaustTypes() {
+        return exhaustTypes;
+    }
+
+    public ArrayList<ColorType> getColorTypes() {
+        return colorTypes;
     }
 
     public ArrayList<RoomType> getRoomTypes() {
@@ -123,7 +157,6 @@ class Boat {
 
 
 class BoatList {
-    private ArrayList<MotorType> motorTypes = new ArrayList<MotorType>();
     private ArrayList<BoatType> boatTypes = new ArrayList<BoatType>();
 
     BoatList() {
@@ -134,8 +167,24 @@ class BoatList {
         MotorType mercedes = new MotorType("Mercedes", 500);
         MotorType bmw = new MotorType("BMW", 5000);
 
-        RoomType cabinClassic = new RoomType("Classic", 100);
-        RoomType suiteLuxury = new RoomType("Luxury", 1100);
+        RoomType cabin = new RoomType("Cabin", 100);
+        RoomType suite = new RoomType("Suite", 1100);
+        RoomType stateroon = new RoomType("Stateroom", 1100);
+        RoomType theater = new RoomType("Theater", 2150);
+        RoomType kitchen = new RoomType("Kitchen", 3100);
+
+        SteeringWheelType alloy = new SteeringWheelType("Alloy", 350);
+        SteeringWheelType chrome = new SteeringWheelType("Chrome", 650);
+        SteeringWheelType wood = new SteeringWheelType("Wood", 450);
+
+        ExhaustType singlePipe = new ExhaustType("Single Pipe", 200);
+        ExhaustType doublePipe = new ExhaustType("Double Pipe", 400);
+        ExhaustType triplePipe = new ExhaustType("Triple Pipe", 800);
+
+        ColorType white = new ColorType("White", 600);
+        ColorType red = new ColorType("Red", 600);
+        ColorType blue = new ColorType("Blue", 600);
+        ColorType yellow = new ColorType("Yellow", 600);
 
         BoatType boatType = new BoatType("Speedboat", 35000, "Low");
         boatTypes.add(boatType);
@@ -144,7 +193,16 @@ class BoatList {
         boatType.AddMotor(ferrari);
         boatType.AddMotor(ferrariElectric);
         boatType.AddMotor(mercedes);
-        boatType.AddRoom(cabinClassic);
+        boatType.AddSteeringWheel(alloy);
+        boatType.AddSteeringWheel(chrome);
+        boatType.AddSteeringWheel(wood);
+        boatType.AddExhaust(singlePipe);
+        boatType.AddExhaust(doublePipe);
+        boatType.AddExhaust(triplePipe);
+        boatType.AddColor(white);
+        boatType.AddColor(red);
+        boatType.AddColor(blue);
+        boatType.AddColor(yellow);
 
         boatType = new BoatType("Yacht", 600000, "High");
         boatTypes.add(boatType);
@@ -152,14 +210,22 @@ class BoatList {
         boatType.AddMotor(ferrari);
         boatType.AddMotor(mercedes);
         boatType.AddMotor(bmw);
-        boatType.AddRoom(cabinClassic);
-        boatType.AddRoom(suiteLuxury);
-
-/*         boats.add(new BoatType("Canoe", 900, "Low"));
-        boats.add(new BoatType("Kayak", 420, "Low"));
-        boats.add(new BoatType("Raft", 150, "Low"));
-        boats.add(new BoatType("Lifeboat", 72000, "Medium"));
- */    }
+        boatType.AddSteeringWheel(alloy);
+        boatType.AddSteeringWheel(chrome);
+        boatType.AddSteeringWheel(wood);
+        boatType.AddRoom(cabin);
+        boatType.AddRoom(suite);
+        boatType.AddRoom(stateroon);
+        boatType.AddRoom(theater);
+        boatType.AddRoom(kitchen);
+        boatType.AddExhaust(singlePipe);
+        boatType.AddExhaust(doublePipe);
+        boatType.AddExhaust(triplePipe);
+        boatType.AddColor(white);
+        boatType.AddColor(red);
+        boatType.AddColor(blue);
+        boatType.AddColor(yellow);
+    }
 
     public ArrayList<BoatType> getBoatTypes() {
         return boatTypes;

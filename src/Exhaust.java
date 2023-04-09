@@ -1,46 +1,28 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Exhaust {
+class ExhaustSelector {
     Scanner input = new Scanner(System.in);
-    private String type;
-    private String length;
-    private ArrayList<Exhaust> exhausts = new ArrayList<Exhaust>();
 
-    Exhaust() {}
-    public Exhaust(String type, String length) {
-        this.type = type;
-        this.length = length;
-    }
+    public ExhaustType selectExhaust(BoatType boatType) {
+        System.out.printf("\nEnter the Exhaust you want to add: \n\n");
+        ArrayList<ExhaustType> exhaustTypes = boatType.getExhaustTypes();
 
-    public void selectExhaust() {
-        System.out.printf("\nEnter the Type of the wheel: \n\n" +
-            "$200,- Single Pipe \n" +
-            "$115,- Dual Exhaust \n" +
-            "$ 75,- Dual Rear Exhaust \n" +
-            "$ 75,- Dual Side Exhaust \n" +
-            "$ 75,- Triple Exhaust \n" +
+        for (ExhaustType exhaustType : exhaustTypes) {
+            System.out.printf(exhaustType.getName() + " $" + exhaustType.getPrice() + " \n");
+        }
+        System.out.printf(
             "Type 'done' to finish.\n\n" +
             "Your input: ");
-        String exhaustType = input.nextLine();
-        System.out.print("Enter the length of exhaust: ");
-        String exhaustLength = input.nextLine();
-        setExhaust(new Exhaust(exhaustType, exhaustLength));
-    }
 
-    public String getType() {
-        return type;
-    }
+        String chosenExhaustType = input.nextLine();
 
-    public String getLength() {
-        return length;
-    }
+        for (ExhaustType exhaustType : exhaustTypes) {
+            if (exhaustType.getName().equalsIgnoreCase(chosenExhaustType)) {
+                return exhaustType;
+            }
+        }
 
-    public ArrayList<Exhaust> getExhaust() {
-        return exhausts;
-    }
-
-    public void setExhaust(Exhaust exhaust) {
-        this.exhausts.add(exhaust);
+        return null;
     }
 }

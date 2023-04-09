@@ -1,24 +1,17 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
-
-
 class BoatAssembly {
     Scanner input = new Scanner(System.in);
     BoatList boatList = new BoatList();
     RoomSelector roomSelector = new RoomSelector();
-    Wheel wheels = new Wheel();
-    primaryColor primaryColors = new primaryColor();
-    secondaryColor secondaryColors = new secondaryColor();
-    Exhaust exhausts = new Exhaust();
+    WheelSelector wheelSelector = new WheelSelector();
+    ColorSelector colorSelector = new ColorSelector();
+    ExhaustSelector exhaustSelector = new ExhaustSelector();
     Customer customer = new Customer();
     MotorSelector motorSelector = new MotorSelector();
 
-
-
     Boat selectedBoat = null;
-
 
     public void boatAssemble() {
         System.out.println("\nBoat Assembly Program\n----------------------");
@@ -51,8 +44,7 @@ class BoatAssembly {
                     "- Room | Options: Amount, Type, Theme\n" +
                     "- Motor | Options: Engine, Type\n" +
                     "- Wheel | Options: Material, Type\n" +
-                    "- Primary Color\n" +
-                    "- Secondary Color\n" +
+                    "- Color\n" +
                     "- Exhaust | Options: Type, Length\n\n" +
                     "Type 'done' to finish.\n\n" +
                     "Your input: ");
@@ -65,16 +57,13 @@ class BoatAssembly {
                         selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
                         break;
                     case "wheel":
-                        wheels.selectWheel();
+                        selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
                         break;
-                    case "primarycolor", "primary", "primary color":
-                        primaryColors.selectColor();
-                        break;
-                    case "secondarycolor", "secondary", "secondary color":
-                        secondaryColors.selectColor();
+                    case "color", "Color":
+                        selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
                         break;
                     case "exhaust":
-                        exhausts.selectExhaust();
+                        selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
                         break;
                     case "done":
                         addParts = false;
@@ -92,8 +81,7 @@ class BoatAssembly {
                 System.out.printf("\n\nEnter the name of the part you want to add \n\n" +
                         "- Motor | Options: Engine, Type\n" +
                         "- Wheel | Options: Material, Type\n" +
-                        "- Primary Color\n" +
-                        "- Secondary Color\n" +
+                        "- Color\n" +
                         "- Exhaust | Options: Type, Length\n\n" +
                         "Type 'done' to finish.\n\n" +
                         "Your input: ");
@@ -103,16 +91,13 @@ class BoatAssembly {
                         selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
                         break;
                     case "wheel":
-                        wheels.selectWheel();
+                        selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
                         break;
-                    case "primarycolor", "primary", "primary color":
-                        primaryColors.selectColor();
-                        break;
-                    case "secondarycolor", "secondary", "secondary color":
-                        secondaryColors.selectColor();
+                    case "color", "Color":
+                        selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
                         break;
                     case "exhaust":
-                        exhausts.selectExhaust();
+                        selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
                         break;
                     case "done":
                         addParts = false;
@@ -130,8 +115,7 @@ class BoatAssembly {
                 System.out.printf("\n\nEnter the name of the part you want to add \n\n" +
                         "- Motor | Options: Engine, Type\n" +
                         "- Wheel | Options: Material, Type\n" +
-                        "- Primary Color\n" +
-                        "- Secondary Color\n" +
+                        "- Color\n" +
                         "- Exhaust | Options: Type, Length\n\n" +
                         "Type 'done' to finish.\n\n" +
                         "Your input: ");
@@ -141,16 +125,13 @@ class BoatAssembly {
                         selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
                         break;
                     case "wheel":
-                        wheels.selectWheel();
+                        selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
                         break;
-                    case "primarycolor", "primary", "primary color":
-                        primaryColors.selectColor();
-                        break;
-                    case "secondarycolor", "secondary", "secondary color":
-                        secondaryColors.selectColor();
+                    case "color", "Color":
+                        selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
                         break;
                     case "exhaust":
-                        exhausts.selectExhaust();
+                        selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
                         break;
                     case "done":
                         addParts = false;
