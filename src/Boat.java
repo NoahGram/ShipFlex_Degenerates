@@ -239,6 +239,7 @@ class BoatList {
         ExhaustType singlePipe = new ExhaustType("Single Pipe", 1, 200);
         ExhaustType doublePipe = new ExhaustType("Double Pipe", 2, 400);
         ExhaustType triplePipe = new ExhaustType("Triple Pipe", 3, 800);
+        ExhaustType milieuPipe = new ExhaustType("Milieu Pipe", 4, 150);
 
         ColorType white = new ColorType("White", 1, 600);
         ColorType red = new ColorType("Red", 2, 600);
@@ -249,6 +250,7 @@ class BoatList {
         WaterType swimmingPool = new WaterType("Swimming Pool", 2, 4500);
         WaterType tippingBucket = new WaterType("Tipping Bucket", 3, 2350);
         WaterType jetski = new WaterType("Jetski", 4, 5225);
+        WaterType jetskiElectric = new WaterType("Jetski Electric", 5, 3225);
 
         BoatType boatType = new BoatType("Speedboat", 1, 35000, "Low");
         boatTypes.add(boatType);
@@ -263,6 +265,7 @@ class BoatList {
         boatType.AddExhaust(singlePipe);
         boatType.AddExhaust(doublePipe);
         boatType.AddExhaust(triplePipe);
+        boatType.AddExhaust(milieuPipe);
         boatType.AddColor(white);
         boatType.AddColor(red);
         boatType.AddColor(blue);
@@ -281,6 +284,7 @@ class BoatList {
         boatType.AddExhaust(singlePipe);
         boatType.AddExhaust(doublePipe);
         boatType.AddExhaust(triplePipe);
+        boatType.AddExhaust(milieuPipe);
         boatType.AddColor(white);
         boatType.AddColor(red);
         boatType.AddColor(blue);
@@ -297,14 +301,15 @@ class BoatList {
         boatType.AddSteeringWheel(alloy);
         boatType.AddSteeringWheel(chrome);
         boatType.AddSteeringWheel(wood);
+        boatType.AddRoom(kitchen);
         boatType.AddRoom(cabin);
         boatType.AddRoom(suite);
         boatType.AddRoom(stateroon);
         boatType.AddRoom(theater);
-        boatType.AddRoom(kitchen);
         boatType.AddExhaust(singlePipe);
         boatType.AddExhaust(doublePipe);
         boatType.AddExhaust(triplePipe);
+        boatType.AddExhaust(milieuPipe);
         boatType.AddColor(white);
         boatType.AddColor(red);
         boatType.AddColor(blue);
@@ -313,6 +318,7 @@ class BoatList {
         boatType.AddWater(swimmingPool);
         boatType.AddWater(tippingBucket);
         boatType.AddWater(jetski);
+        boatType.AddWater(jetskiElectric);
     }
 
     public ArrayList<BoatType> getBoatTypes() {
