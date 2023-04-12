@@ -9,16 +9,16 @@ class ExhaustSelector {
         ArrayList<ExhaustType> exhaustTypes = boatType.getExhaustTypes();
 
         for (ExhaustType exhaustType : exhaustTypes) {
-            System.out.printf(exhaustType.getName() + " $" + exhaustType.getPrice() + " \n");
+            System.out.printf(exhaustType.getNumber() + " - " + exhaustType.getName() + " $" + exhaustType.getPrice() + " \n");
         }
         System.out.printf(
             "Type 'done' to finish.\n\n" +
             "Your input: ");
 
-        String chosenExhaustType = input.nextLine();
+        int chosenExhaustType = input.nextInt();
 
         for (ExhaustType exhaustType : exhaustTypes) {
-            if (exhaustType.getName().equalsIgnoreCase(chosenExhaustType)) {
+            if (exhaustType.getNumber() == (chosenExhaustType)) {
                 return exhaustType;
             }
         }

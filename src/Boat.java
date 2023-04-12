@@ -2,19 +2,25 @@ import java.lang.StackWalker.Option;
 import java.lang.module.ModuleReader;
 import java.util.ArrayList;
 
-class BoatOption {
+abstract class BoatOption {
     private String optionType;
+    private int number;
     private String name;
     private double price;
 
-    BoatOption(String optionType, String name, double price) {
+    BoatOption(String optionType, String name, int number, double price) {
         this.optionType = optionType;
         this.name = name;
+        this.number = number;
         this.price = price;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     public double getPrice() {
@@ -23,37 +29,44 @@ class BoatOption {
 }
 
 class MotorType extends BoatOption {
-    MotorType(String name, double price) {
-        super("Motor", name, price);
+    MotorType(String name, int number, double price) {
+        super("Motor", name, number, price);
     }
 }
 
 class SteeringWheelType extends BoatOption {
-    SteeringWheelType(String name, double price) {
-        super("Wheel", name, price);
+    SteeringWheelType(String name, int number, double price) {
+        super("Wheel", name, number, price);
     }
 }
 
 class ExhaustType extends BoatOption {
-    ExhaustType(String name, double price) {
-        super("Exhaust", name, price);
+    ExhaustType(String name, int number, double price) {
+        super("Exhaust", name, number, price);
     }
 }
 
 class ColorType extends BoatOption {
-    ColorType(String name, double price) {
-        super("Color", name, price);
+    ColorType(String name, int number, double price) {
+        super("Color", name, number, price);
     }
 }
 
 class RoomType extends BoatOption {
-    RoomType(String name, double price) {
-        super("Room", name, price);
+    RoomType(String name, int number, double price) {
+        super("Room", name, number, price);
+    }
+}
+
+class WaterType extends BoatOption {
+    WaterType(String name, int number, double price) {
+        super("Water", name, number, price);
     }
 }
 
 class BoatType {
     private String name;
+    private int number;
     private double price;
     private String type;
 
@@ -62,9 +75,11 @@ class BoatType {
     private ArrayList<ExhaustType> exhaustTypes = new ArrayList<ExhaustType>();
     private ArrayList<ColorType> colorTypes = new ArrayList<ColorType>();
     private ArrayList<RoomType> roomTypes = new ArrayList<RoomType>();
+    private ArrayList<WaterType> waterTypes = new ArrayList<WaterType>();
 
-    BoatType(String name, double price, String type) {
+    BoatType(String name, int number, double price, String type) {
         this.name = name;
+        this.number = number;
         this.price = price;
         this.type = type;
     }
@@ -89,8 +104,16 @@ class BoatType {
         roomTypes.add(roomType);
     }
 
+    public void AddWater(WaterType waterType) {
+        waterTypes.add(waterType);
+    }
+
     public String getName() {
         return name;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     public double getPrice() {
@@ -124,6 +147,10 @@ class BoatType {
     public ArrayList<RoomType> getRoomTypes() {
         return roomTypes;
     }
+
+    public ArrayList<WaterType> getWaterTypes() {
+        return waterTypes;
+    }
 }
 
 
@@ -143,50 +170,87 @@ class Boat {
         return boatType;
     }
 
-    public double getTotalCost() {
+    public ArrayList<BoatOption> getOptions() {
+        return options;
+    }
+
+    public void boatSummary(Customer customer) {
+        System.out.println("\nBoat Summary\n-------------");
+        System.out.println("Boat Type: "+ boatType.getName() +"\n");
+        System.out.println("Base Price: $"+ boatType.getPrice() +"\n");
+        System.out.println("Selected Options:\n");
+        for (BoatOption option : options) {
+            System.out.println("- "+ option.getName()+ ": $"+ option.getPrice()+ "\n");
+        }
+        System.out.println("Total Price: $"+ getTotalCost(customer)+ "\n");
+        System.out.println("Thank you for using our boat assembly program!");
+        System.out.println("We hope to hear from you soon.\n");
+    }
+
+    public double getTotalCost(Customer customer) {
         double totalCost = 0.0;
+        double discount = 0;
 
         totalCost += boatType.getPrice();
         for (BoatOption boatOption : options) {
             totalCost += boatOption.getPrice();
         }
-
+        String customerType = customer.getType();
+        
+        System.out.println("Customer Type: "+customerType);
+        if (customerType.equals("Commercial") || customerType.equals("commercial")) {
+            discount = 0.1 * totalCost;
+            return totalCost - discount;
+        }else if(customerType.equals("Private") || customerType.equals("private")) {
+            discount = 0.5 * totalCost;
+            return totalCost - discount;
+        }else if(customerType.equals("Government") || customerType.equals("government")) {
+            discount = 0.2 * totalCost;
+            return totalCost - discount;
+        }else{
+            System.out.println("Error No Customer Type Selected.\n");
+        }
+          System.out.println("Here!!!!");
         return totalCost;
     }
 }
-
 
 class BoatList {
     private ArrayList<BoatType> boatTypes = new ArrayList<BoatType>();
 
     BoatList() {
-        MotorType toyota = new MotorType("Toyota", 200);
-        MotorType bugatti = new MotorType("bugatti", 1200);
-        MotorType ferrari = new MotorType("Ferrari Diesel", 800);
-        MotorType ferrariElectric = new MotorType("Ferrari Electric", 1200);
-        MotorType mercedes = new MotorType("Mercedes", 500);
-        MotorType bmw = new MotorType("BMW", 5000);
+        MotorType toyota = new MotorType("Toyota", 1, 200);
+        MotorType bugatti = new MotorType("bugatti", 2, 1200);
+        MotorType ferrari = new MotorType("Ferrari Diesel", 3, 800);
+        MotorType ferrariElectric = new MotorType("Ferrari Electric", 4, 1200);
+        MotorType mercedes = new MotorType("Mercedes", 5, 500);
+        MotorType bmw = new MotorType("BMW", 6, 5000);
 
-        RoomType cabin = new RoomType("Cabin", 100);
-        RoomType suite = new RoomType("Suite", 1100);
-        RoomType stateroon = new RoomType("Stateroom", 1100);
-        RoomType theater = new RoomType("Theater", 2150);
-        RoomType kitchen = new RoomType("Kitchen", 3100);
+        RoomType kitchen = new RoomType("Kitchen", 1, 3100);
+        RoomType cabin = new RoomType("Cabin", 2, 100);
+        RoomType suite = new RoomType("Suite", 3, 1100);
+        RoomType stateroon = new RoomType("Stateroom", 4, 1100);
+        RoomType theater = new RoomType("Theater", 5, 2150);
 
-        SteeringWheelType alloy = new SteeringWheelType("Alloy", 350);
-        SteeringWheelType chrome = new SteeringWheelType("Chrome", 650);
-        SteeringWheelType wood = new SteeringWheelType("Wood", 450);
+        SteeringWheelType alloy = new SteeringWheelType("Alloy", 1, 350);
+        SteeringWheelType chrome = new SteeringWheelType("Chrome", 2, 650);
+        SteeringWheelType wood = new SteeringWheelType("Wood", 3, 450);
 
-        ExhaustType singlePipe = new ExhaustType("Single Pipe", 200);
-        ExhaustType doublePipe = new ExhaustType("Double Pipe", 400);
-        ExhaustType triplePipe = new ExhaustType("Triple Pipe", 800);
+        ExhaustType singlePipe = new ExhaustType("Single Pipe", 1, 200);
+        ExhaustType doublePipe = new ExhaustType("Double Pipe", 2, 400);
+        ExhaustType triplePipe = new ExhaustType("Triple Pipe", 3, 800);
 
-        ColorType white = new ColorType("White", 600);
-        ColorType red = new ColorType("Red", 600);
-        ColorType blue = new ColorType("Blue", 600);
-        ColorType yellow = new ColorType("Yellow", 600);
+        ColorType white = new ColorType("White", 1, 600);
+        ColorType red = new ColorType("Red", 2, 600);
+        ColorType blue = new ColorType("Blue", 3, 600);
+        ColorType yellow = new ColorType("Yellow", 4, 600);
 
-        BoatType boatType = new BoatType("Speedboat", 35000, "Low");
+        WaterType hottub = new WaterType("Hottub", 1, 1400);
+        WaterType swimmingPool = new WaterType("Swimming Pool", 2, 4500);
+        WaterType tippingBucket = new WaterType("Tipping Bucket", 3, 2350);
+        WaterType jetski = new WaterType("Jetski", 4, 5225);
+
+        BoatType boatType = new BoatType("Speedboat", 1, 35000, "Low");
         boatTypes.add(boatType);
         boatType.AddMotor(toyota);
         boatType.AddMotor(bugatti);
@@ -204,8 +268,28 @@ class BoatList {
         boatType.AddColor(blue);
         boatType.AddColor(yellow);
 
-        boatType = new BoatType("Yacht", 600000, "High");
+        boatType = new BoatType("Sailboat", 2, 35000, "Medium");
         boatTypes.add(boatType);
+        boatType.AddMotor(toyota);
+        boatType.AddMotor(bugatti);
+        boatType.AddMotor(ferrari);
+        boatType.AddMotor(ferrariElectric);
+        boatType.AddMotor(mercedes);
+        boatType.AddSteeringWheel(alloy);
+        boatType.AddSteeringWheel(chrome);
+        boatType.AddSteeringWheel(wood);
+        boatType.AddExhaust(singlePipe);
+        boatType.AddExhaust(doublePipe);
+        boatType.AddExhaust(triplePipe);
+        boatType.AddColor(white);
+        boatType.AddColor(red);
+        boatType.AddColor(blue);
+        boatType.AddColor(yellow);
+        boatType.AddRoom(kitchen);
+
+        boatType = new BoatType("Yacht", 3, 600000, "High");
+        boatTypes.add(boatType);
+        boatType.AddMotor(toyota);
         boatType.AddMotor(bugatti);
         boatType.AddMotor(ferrari);
         boatType.AddMotor(mercedes);
@@ -225,6 +309,10 @@ class BoatList {
         boatType.AddColor(red);
         boatType.AddColor(blue);
         boatType.AddColor(yellow);
+        boatType.AddWater(hottub);
+        boatType.AddWater(swimmingPool);
+        boatType.AddWater(tippingBucket);
+        boatType.AddWater(jetski);
     }
 
     public ArrayList<BoatType> getBoatTypes() {

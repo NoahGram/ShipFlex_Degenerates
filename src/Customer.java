@@ -18,15 +18,17 @@ public class Customer {
     public void setCustomerInfo() {
         System.out.println("\nEnter Customer Name: ");
         String customerName = input.nextLine();
+        this.name = customerName;
         System.out.println("\nEnter Business Name:");
         String businessName = input.nextLine();
+        this.businessName = businessName;
         System.out.printf("\nEnter Customer Type: \n" +
-            "Commercial\n" +
-            "Private\n" +
-            "Goverment\n" +
+            "1 - Commercial\n" +
+            "2 - Private\n" +
+            "3 - Government\n" +
             "Your input: ");
         String customerType = input.nextLine();
-        customer.add(new Customer(customerName, businessName, customerType));
+        this.type = customerType;
     }
 
     public void getCustomerInfo() {

@@ -8,6 +8,7 @@ class BoatAssembly {
     WheelSelector wheelSelector = new WheelSelector();
     ColorSelector colorSelector = new ColorSelector();
     ExhaustSelector exhaustSelector = new ExhaustSelector();
+    WaterSelector waterSelector = new WaterSelector();
     Customer customer = new Customer();
     MotorSelector motorSelector = new MotorSelector();
 
@@ -18,15 +19,17 @@ class BoatAssembly {
 
         System.out.println("Available boats:");
         for (BoatType boatType : boatList.getBoatTypes()) {
-            System.out.printf("%s ($%.2f)\n", boatType.getName(), boatType.getPrice());
+            System.out.printf("%d - %s ($%.2f)\n", boatType.getNumber(), boatType.getName(), boatType.getPrice());
         }
 
         System.out.print("\nEnter the name of the boat you want to assemble: ");
-        String boatTypeName = input.nextLine();
+        int boatTypeName = input.nextInt();
+        input.nextLine();
         selectedBoat = null;
         for (BoatType boatType : boatList.getBoatTypes()) {
-            if (boatType.getName().equalsIgnoreCase(boatTypeName)) {
+            if (boatType.getNumber() ==(boatTypeName)) {
                 selectedBoat = new Boat(boatType);
+                System.out.println(selectedBoat);
                 break;
             }
         }
@@ -41,31 +44,35 @@ class BoatAssembly {
             boolean addParts = true;
             while (addParts) {
                 System.out.printf("\n\nEnter the name of the part you want to add \n\n" +
-                    "- Room | Options: Amount, Type, Theme\n" +
-                    "- Motor | Options: Engine, Type\n" +
-                    "- Wheel | Options: Material, Type\n" +
-                    "- Color\n" +
-                    "- Exhaust | Options: Type, Length\n\n" +
+                    "1 - Room | Options: Amount, Type, Theme\n" +
+                    "2 - Motor | Options: Engine, Type\n" +
+                    "3 - Wheel | Options: Material, Type\n" +
+                    "4 - Color\n" +
+                    "5 - Exhaust | Options: Type, Length\n\n" +
+                    "6 - Water Equipment | Options: Amount, Type, Theme\n" +
                     "Type 'done' to finish.\n\n" +
                     "Your input: ");
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
-                    case "room":
+                    case "room", "Room", "1":
                         selectedBoat.AddOption(roomSelector.selectRoom(selectedBoat.getBoatType()));
                         break;
-                    case "motor":
+                    case "motor", "Motor", "2":
                         selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
                         break;
-                    case "wheel":
+                    case "wheel", "Wheel", "3":
                         selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
                         break;
-                    case "color", "Color":
+                    case "color", "Color", "4":
                         selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
                         break;
-                    case "exhaust":
+                    case "exhaust", "Exhaust", "5":
                         selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
                         break;
-                    case "done":
+                    case "water", "Water", "6":
+                        selectedBoat.AddOption(waterSelector.selectWater(selectedBoat.getBoatType()));
+                        break;
+                    case "done", "Done":
                         addParts = false;
                         break;
                     default:
@@ -79,27 +86,35 @@ class BoatAssembly {
             boolean addParts = true;
             while (addParts) {
                 System.out.printf("\n\nEnter the name of the part you want to add \n\n" +
-                        "- Motor | Options: Engine, Type\n" +
-                        "- Wheel | Options: Material, Type\n" +
-                        "- Color\n" +
-                        "- Exhaust | Options: Type, Length\n\n" +
+                        "1 - Room | Options: Amount, Type, Theme\n" +
+                        "2 - Motor | Options: Engine, Type\n" +
+                        "3 - Wheel | Options: Material, Type\n" +
+                        "4 - Color\n" +
+                        "5 - Exhaust | Options: Type, Length\n\n" +
+                        "6 - Water Equipment | Options: Amount, Type, Theme\n" +
                         "Type 'done' to finish.\n\n" +
                         "Your input: ");
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
-                    case "motor":
+                    case "room", "Room", "1":
+                        selectedBoat.AddOption(roomSelector.selectRoom(selectedBoat.getBoatType()));
+                        break;
+                    case "motor", "Motor", "2":
                         selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
                         break;
-                    case "wheel":
+                    case "wheel", "Wheel", "3":
                         selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
                         break;
-                    case "color", "Color":
+                    case "color", "Color", "4":
                         selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
                         break;
-                    case "exhaust":
+                    case "exhaust", "Exhaust", "5":
                         selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
                         break;
-                    case "done":
+                    case "water", "Water", "6":
+                        selectedBoat.AddOption(waterSelector.selectWater(selectedBoat.getBoatType()));
+                        break;
+                    case "done", "Done":
                         addParts = false;
                         break;
                     default:
@@ -113,27 +128,31 @@ class BoatAssembly {
             boolean addParts = true;
             while (addParts) {
                 System.out.printf("\n\nEnter the name of the part you want to add \n\n" +
-                        "- Motor | Options: Engine, Type\n" +
-                        "- Wheel | Options: Material, Type\n" +
-                        "- Color\n" +
-                        "- Exhaust | Options: Type, Length\n\n" +
+                        "1 - Motor | Options: Engine, Type\n" +
+                        "2 - Wheel | Options: Material, Type\n" +
+                        "3 - Color\n" +
+                        "4 - Exhaust | Options: Type, Length\n\n" +
+                        "5 - Water Equipment | Options: Amount, Type, Theme\n" +
                         "Type 'done' to finish.\n\n" +
                         "Your input: ");
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
-                    case "motor":
+                    case "motor", "Motor", "1":
                         selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
                         break;
-                    case "wheel":
+                    case "wheel", "Wheel", "2":
                         selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
                         break;
-                    case "color", "Color":
+                    case "color", "Color", "3":
                         selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
                         break;
-                    case "exhaust":
+                    case "exhaust", "Exhaust", "4":
                         selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
                         break;
-                    case "done":
+                    case "water", "Water", "5":
+                        selectedBoat.AddOption(waterSelector.selectWater(selectedBoat.getBoatType()));
+                        break;
+                    case "done", "Done":
                         addParts = false;
                         break;
                     default:
@@ -145,38 +164,7 @@ class BoatAssembly {
         }
     }
 
-    public void boatSummary() {
-        double totalCost = selectedBoat.getTotalCost();
-        
-        System.out.println("\nBoat Assembly Summary:");
-        customer.getCustomerInfo();
-/*         System.out.printf("Boat: %s ($%.2f)%n", selectedBoat.getName(), selectedBoat.getPrice());
-        totalCost = selectedBoat.getPrice();
- */        
-/*         for (Room room : rooms.getRooms()) {
-            totalCost+=1200;
-            System.out.println("Room - Amount: " + room.getAmount() + ", Type: " + room.getType() + ", Theme: " + room.getTheme() + " ($1200)");
-        }
-        for (Motor motor : motors.getMotor()) {
-            totalCost+=200;                                                                                                                                                                                                                                                                                                                     
-            System.out.println("Motor - Type: " + motor.getType() + ", Instrument: " + motor.getInstrument() + " ($200)");
-        }
-        for (Wheel wheel : wheels.getWheel()) {
-            totalCost+=75;
-            System.out.println("Wheel - Material: " + wheel.getMaterial() + ", Type: " + wheel.getType() + " ($75)");
-        }
-        for (primaryColor color : primaryColors.getPrimaryColor()) {
-            totalCost+=115;
-            System.out.println("Primary color: " + color.getColor() + " ($115)");
-        }
-        for (secondaryColor color : secondaryColors.getSecondaryColor()) {
-            totalCost+=115;
-            System.out.println("Secondary color: " + color.getColor() + " ($115)");
-        }
-        for (Exhaust exhaust : exhausts.getExhaust()) {
-            totalCost+=50;
-            System.out.println("Exhaust - Type: " + exhaust.getType() + ", Length: " + exhaust.getLength() + " ($50)");
-        }
- */        System.out.printf("Total Cost: $%.2f%n", totalCost);
+    public void boatOfferte(Customer customer) {
+        selectedBoat.boatSummary(customer);
     }
 }

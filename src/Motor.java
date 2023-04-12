@@ -9,16 +9,16 @@ class MotorSelector {
         ArrayList<MotorType> motorTypes = boatType.getMotorTypes();
 
         for (MotorType motorType : motorTypes) {
-            System.out.printf(motorType.getName() + " $" + motorType.getPrice() + " \n");
+            System.out.printf(motorType.getNumber() + " - " + motorType.getName() + " $" + motorType.getPrice() + " \n");
         }
         System.out.printf(
             "Type 'done' to finish.\n\n" +
             "Your input: ");
 
-        String chosenMotorType = input.nextLine();
+        int chosenMotorType = input.nextInt();
 
         for (MotorType motorType : motorTypes) {
-            if (motorType.getName().equalsIgnoreCase(chosenMotorType)) {
+            if (motorType.getNumber() == (chosenMotorType)) {
                 return motorType;
             }
         }

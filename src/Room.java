@@ -9,16 +9,16 @@ class RoomSelector {
         ArrayList<RoomType> roomTypes = boatType.getRoomTypes();
 
         for (RoomType roomType : roomTypes) {
-            System.out.printf(roomType.getName() + " $" + roomType.getPrice() + " \n");
+            System.out.printf(roomType.getNumber() + " - " + roomType.getName() + " $" + roomType.getPrice() + " \n");
         }
         System.out.printf(
             "Type 'done' to finish.\n\n" +
             "Your input: ");
 
-        String chosenRoomType = input.nextLine();
+        int chosenRoomType = input.nextInt();
 
         for (RoomType roomType : roomTypes) {
-            if (roomType.getName().equalsIgnoreCase(chosenRoomType)) {
+            if (roomType.getNumber() == (chosenRoomType)) {
                 return roomType;
             }
         }
