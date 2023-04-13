@@ -198,13 +198,13 @@ class Boat {
         String customerType = customer.getType();
         
         System.out.println("Customer Type: "+customerType);
-        if (customerType.equals("Commercial") || customerType.equals("commercial")) {
+        if (customerType.equals("Commercial") || customerType.equals("commercial") || customerType.equals("1")) {
             discount = 0.1 * totalCost;
             return totalCost - discount;
-        }else if(customerType.equals("Private") || customerType.equals("private")) {
+        }else if(customerType.equals("Private") || customerType.equals("private") || customerType.equals("2")) {
             discount = 0.5 * totalCost;
             return totalCost - discount;
-        }else if(customerType.equals("Government") || customerType.equals("government")) {
+        }else if(customerType.equals("Government") || customerType.equals("government") || customerType.equals("3")) {
             discount = 0.2 * totalCost;
             return totalCost - discount;
         }else{

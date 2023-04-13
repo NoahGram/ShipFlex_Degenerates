@@ -91,7 +91,6 @@ class BoatAssembly {
                         "3 - Wheel | Options: Material, Type\n" +
                         "4 - Color\n" +
                         "5 - Exhaust | Options: Type, Length\n\n" +
-                        "6 - Water Equipment | Options: Amount, Type, Theme\n" +
                         "Type 'done' to finish.\n\n" +
                         "Your input: ");
                 String part = input.nextLine();
@@ -111,9 +110,6 @@ class BoatAssembly {
                     case "exhaust", "Exhaust", "5":
                         selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
                         break;
-                    case "water", "Water", "6":
-                        selectedBoat.AddOption(waterSelector.selectWater(selectedBoat.getBoatType()));
-                        break;
                     case "done", "Done":
                         addParts = false;
                         break;
@@ -132,7 +128,6 @@ class BoatAssembly {
                         "2 - Wheel | Options: Material, Type\n" +
                         "3 - Color\n" +
                         "4 - Exhaust | Options: Type, Length\n\n" +
-                        "5 - Water Equipment | Options: Amount, Type, Theme\n" +
                         "Type 'done' to finish.\n\n" +
                         "Your input: ");
                 String part = input.nextLine();
@@ -148,9 +143,6 @@ class BoatAssembly {
                         break;
                     case "exhaust", "Exhaust", "4":
                         selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
-                        break;
-                    case "water", "Water", "5":
-                        selectedBoat.AddOption(waterSelector.selectWater(selectedBoat.getBoatType()));
                         break;
                     case "done", "Done":
                         addParts = false;
