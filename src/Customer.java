@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -29,7 +30,7 @@ public class Customer {
             System.out.println("\nEnter Customer Name: ");
             String customerName = input.nextLine();
             String businessName = "";
-            if (customerType == 2) {
+            if (customerType != 1) {
                 System.out.println("\nEnter Business Name:");
                 businessName = input.nextLine();
             }
@@ -73,5 +74,13 @@ public class Customer {
 
     public ArrayList<Customer> getCustomer() {
         return customer;
+    }
+
+    public void setType(String type) {
+        this.types.add(type);
+    }
+
+    public ArrayList<String> getTypes() {
+        return this.types;
     }
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -5,7 +6,7 @@ public class Main {
         Customer customer = new Customer();
         BoatAssembly boatCreate = new BoatAssembly();
         Scanner input = new Scanner(System.in);
-
+        BoatList boat = new BoatList();
         boolean bap;
 
         while (true) {
@@ -13,7 +14,7 @@ public class Main {
                     " 1. Add Customer%n" +
                     " 2. View Customer%n" +
                     " 3. Boat Assembly Program%n" +
-                    " 9. Add/Edit Options%n" +
+                    " 9. Add Options%n" +
                     "%nSelect an option by choosing the corresponding number%n" +
                     "Your input: ");
             switch (input.nextLine()) {
@@ -54,6 +55,48 @@ public class Main {
                         }
                     }
                 case "9.", "9":
+                    System.out.printf("%n%n%n%nAdd Options%n----------------------%n" +
+                            " 1. Add option to existing boat" +
+                            "%n 2. Add new customer type" +
+                            "%n 3. Add new boat type" +
+                            "%n%nSelect an option by choosing the corresponding number%nYour input: ");
+                    switch (input.nextLine()) {
+                        case "1":
+                            System.out.printf("%n%n%n%nAdd Option to Existing Boat%n----------------------%n");
+                            ArrayList<BoatType> types = boat.getBoatTypes();
+                            int i = 1;
+                            for (BoatType type : types) {
+                                System.out.printf("%d. %s%n", i++, type.getName());
+                            }
+                            String entered = "";
+                            switch (entered = input.nextLine()) {
+                                case "1":
+                                    System.out.printf("%n%n%n%n" + types.get(Integer.parseInt(entered)) + "%n----------------------%n");
+
+                                case "2":
+                                case "3":
+                            }
+                        case "2":
+                            while (true) {
+                                System.out.printf("%n%n%n%nAdd New Customer Type%n----------------------%n" +
+                                        "Input the name of the new Customer Type: ");
+                                customer.setType(input.nextLine());
+                                System.out.println("Entered: " + customer.getTypes().get(customer.getTypes().size()-1));
+                                System.out.printf("%nIs this correct?%n");
+                                System.out.printf("%nYour input (Y/N): ");
+                                if (input.nextLine().equalsIgnoreCase("y")) {
+                                    break;
+                                }
+                                else {
+                                    customer.getTypes().remove(customer.getTypes().size()-1);
+                                    System.out.println("Entered data has been wiped. Press Enter to try again.");
+                                    input.nextLine();
+                                }
+                            }
+                        case "3":
+                    }
+
+                    input.nextLine();
                     break;
             }
         }

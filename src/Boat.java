@@ -216,7 +216,7 @@ class BoatList {
 
     BoatList() {
         MotorType toyota = new MotorType("Toyota", 1, 200);
-        MotorType bugatti = new MotorType("bugatti", 2, 1200);
+        MotorType bugatti = new MotorType("Bugatti", 2, 1200);
         MotorType ferrari = new MotorType("Ferrari Diesel", 3, 800);
         MotorType ferrariElectric = new MotorType("Ferrari Electric", 4, 1200);
         MotorType mercedes = new MotorType("Mercedes", 5, 500);
