@@ -175,16 +175,13 @@ class Boat {
     }
 
     public void boatSummary(Customer customer) {
-        System.out.println("\nBoat Summary\n-------------");
-        System.out.println("Boat Type: "+ boatType.getName() +"\n");
+        System.out.println("Boat Type: "+ boatType.getName());
         System.out.println("Base Price: $"+ boatType.getPrice() +"\n");
-        System.out.println("Selected Options:\n");
+        System.out.println("Selected Options:");
         for (BoatOption option : options) {
-            System.out.println("- "+ option.getName()+ ": $"+ option.getPrice()+ "\n");
+            System.out.println("- "+ option.getName()+ ": $"+ option.getPrice());
         }
-        System.out.println("Total Price: $"+ getTotalCost(customer)+ "\n");
-        System.out.println("Thank you for using our boat assembly program!");
-        System.out.println("We hope to hear from you soon.\n");
+        System.out.println("\nTotal Price: $"+ getTotalCost(customer));
     }
 
     public double getTotalCost(Customer customer) {
@@ -195,9 +192,8 @@ class Boat {
         for (BoatOption boatOption : options) {
             totalCost += boatOption.getPrice();
         }
-        String customerType = customer.getType();
-        
-        System.out.println("Customer Type: "+customerType);
+        String customerType = customer.getCustomer().get(0).getType();
+
         if (customerType.equals("Commercial") || customerType.equals("commercial") || customerType.equals("1")) {
             discount = 0.1 * totalCost;
             return totalCost - discount;
