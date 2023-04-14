@@ -27,7 +27,7 @@ public class Customer {
             }
             System.out.printf("%nSelect an option by choosing the corresponding number%nYour input: ");
             int customerType = Integer.parseInt(input.nextLine());
-            System.out.println("\nEnter Customer Name: ");
+            System.out.println("\nEnter Customer Full Name: ");
             String customerName = input.nextLine();
             String businessName = "";
             if (customerType != 1) {

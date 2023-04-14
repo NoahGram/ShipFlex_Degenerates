@@ -7,6 +7,11 @@ public class Main {
         BoatAssembly boatCreate = new BoatAssembly();
         Scanner input = new Scanner(System.in);
         BoatList boat = new BoatList();
+        MotorSelector motor = new MotorSelector();
+        WheelSelector wheel = new WheelSelector();
+        ExhaustSelector exhaust = new ExhaustSelector();
+        ColorSelector color = new ColorSelector();
+
         boolean bap;
 
         while (true) {
@@ -61,33 +66,26 @@ public class Main {
                             for (BoatType type : types) {
                                 System.out.printf("%d. %s%n", i++, type.getName());
                             }
+                            System.out.print("\n\nSelect an option by choosing the corresponding number\nYour input: ");
                             switch (input.nextInt()) {
                                 case 1:
                                     System.out.printf("%n%n%n%n" + types.get(0).getName() + "%n----------------------%n" +
-                                            " 1. Motor%n" + " 2. Wheel%n" + " 3. Exhaust%n" + " 4. Color%n%n" +
+                                            " 1. Motor%n" + " 2. Wheel%n" + " 3. Color%n" + " 4. Exhaust%n%n" +
                                             "Select an option by choosing the corresponding number%nYour input: ");
                                     switch (input.nextInt()) {
                                         case 1:
-                                            System.out.printf("%n%n%n%n" + types.get(0).getName() + " | Motor %n----------------------%n");
-                                            for (int j = 0; j < boatCreate.boatList.getBoatTypes().get(0).getMotorTypes().size(); j++) {
-                                                System.out.println("- " + boatCreate.boatList.getBoatTypes().get(0).getMotorTypes().get(j).getName());
-                                            }
-                                            System.out.println("\nAbove is a list of the pre-existing options for this boat.");
-                                            double partPrice = input.nextDouble();
-                                            input.nextLine();
-                                            String partName = input.nextLine();
-                                            System.out.println("Name: " + partName + "\nPrice: " + partPrice + "\n\nPress Enter to continue");
-                                            MotorType newPart = new MotorType(partName, boatCreate.boatList.getBoatTypes().get(0).getMotorTypes().size()-1, partPrice);
-                                            boatCreate.boatList.getBoatTypes().get(0).AddMotor(newPart);
+                                            motor.addMotor(boatCreate, types, 0);
+                                            break;
                                         case 2:
+                                            wheel.addWheel(boatCreate, types, 0);
+                                            break;
                                         case 3:
+                                            color.addColor(boatCreate, types, 0);
+                                            break;
                                         case 4:
+                                            exhaust.addExhaust(boatCreate, types, 0);
+                                            break;
                                     }
-
-                                    boatCreate.boatList.getBoatTypes().get(0).getWheelTypes();
-                                    boatCreate.boatList.getBoatTypes().get(0).getExhaustTypes();
-                                    boatCreate.boatList.getBoatTypes().get(0).getColorTypes();
-                                    input.nextLine();
                                 case 2:
                                 case 3:
                             }

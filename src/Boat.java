@@ -206,7 +206,6 @@ class Boat {
         }else{
             System.out.println("Error No Customer Type Selected.\n");
         }
-          System.out.println("Here!!!!");
         return totalCost;
     }
 }
