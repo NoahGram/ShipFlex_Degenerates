@@ -271,17 +271,12 @@ class BoatList {
         ExhaustType triplePipe = new ExhaustType("Triple Pipe", 3, 800);
         ExhaustType EcoPipe = new ExhaustType("Eco Pipe", 4, 150);
 
-        ColorType white = new ColorType("White", 1, 600);
-        ColorType black = new ColorType("Black", 2, 600);
-        ColorType red = new ColorType("Red", 3, 600);
-        ColorType orange = new ColorType("Orange", 4, 600);
-        ColorType yellow = new ColorType("Yellow", 5, 600);
-        ColorType green = new ColorType("Green", 6, 600);
-        ColorType blue = new ColorType("Blue", 7, 600);
-        ColorType purple = new ColorType("Purple", 8, 600);
-        ColorType pink = new ColorType("Pink", 9, 600);
-        ColorType gold = new ColorType("Gold", 10, 600);
-        ColorType silver = new ColorType("Silver", 11, 600);
+        ColorType white = new ColorType("Solid", 1, 600);
+        ColorType black = new ColorType("Pearlescent", 2, 1000);
+        ColorType red = new ColorType("Metallic", 3, 800);
+        ColorType orange = new ColorType("Matte", 4, 700);
+        ColorType yellow = new ColorType("Metals", 5, 700);
+        ColorType green = new ColorType("Custom", 6, 1500);
 
 
         WaterType hottub = new WaterType("Hottub", 1, 1400);
@@ -322,11 +317,7 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
+
         boatType.AddWater(diving_board);
         boatType.AddFlag(small);
         boatType.AddFlag(medium);
@@ -354,11 +345,6 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
         boatType.AddWater(diving_board);
         boatType.AddFlag(small);
         boatType.AddFlag(medium);
@@ -385,11 +371,6 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
         boatType.AddWater(diving_board);
         boatType.AddFlag(small);
         boatType.AddFlag(medium);
@@ -416,11 +397,6 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
         boatType.AddWater(diving_board);
         boatType.AddFlag(small);
         boatType.AddFlag(medium);
@@ -447,11 +423,6 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
         boatType.AddRoom(kitchen);
         boatType.AddWater(diving_board);
         boatType.AddWater(jetski);
@@ -485,11 +456,6 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
         boatType.AddRoom(kitchen);
         boatType.AddWater(diving_board);
         boatType.AddWater(jetski);
@@ -523,11 +489,6 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
         boatType.AddRoom(kitchen);
         boatType.AddWater(diving_board);
         boatType.AddWater(jetski);
@@ -561,11 +522,6 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
         boatType.AddRoom(kitchen);
         boatType.AddWater(diving_board);
         boatType.AddWater(jetski);
@@ -605,11 +561,6 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
         boatType.AddWater(hottub);
         boatType.AddWater(swimmingPool);
         boatType.AddWater(diving_board);
@@ -653,11 +604,6 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
         boatType.AddWater(hottub);
         boatType.AddWater(swimmingPool);
         boatType.AddWater(diving_board);
@@ -699,11 +645,6 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
         boatType.AddWater(hottub);
         boatType.AddWater(swimmingPool);
         boatType.AddWater(diving_board);
@@ -745,11 +686,6 @@ class BoatList {
         boatType.AddColor(orange);
         boatType.AddColor(yellow);
         boatType.AddColor(green);
-        boatType.AddColor(blue);
-        boatType.AddColor(purple);
-        boatType.AddColor(pink);
-        boatType.AddColor(gold);
-        boatType.AddColor(silver);
         boatType.AddWater(hottub);
         boatType.AddWater(swimmingPool);
         boatType.AddWater(diving_board);
@@ -765,9 +701,6 @@ class BoatList {
         boatType.AddAnchor(plough);
         boatType.AddAnchor(claw);
         boatType.AddAnchor(scoop);
-
-
-
     }
 
     public ArrayList<BoatType> getBoatTypes() {
