@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 class BoatAssembly {
     Scanner input = new Scanner(System.in);
+
     BoatList boatList = new BoatList();
     RoomSelector roomSelector = new RoomSelector();
     WheelSelector wheelSelector = new WheelSelector();
@@ -15,7 +16,7 @@ class BoatAssembly {
     Boat selectedBoat = null;
 
     public void boatAssemble() {
-        System.out.println("\nBoat Assembly Program\n----------------------");
+        System.out.println("\n\n\n\n\n\nBoat Assembly Program\n----------------------");
 
         System.out.println("Available boats:");
         for (BoatType boatType : boatList.getBoatTypes()) {
@@ -29,7 +30,6 @@ class BoatAssembly {
         for (BoatType boatType : boatList.getBoatTypes()) {
             if (boatType.getNumber() ==(boatTypeName)) {
                 selectedBoat = new Boat(boatType);
-                System.out.println(selectedBoat);
                 break;
             }
         }
@@ -40,18 +40,17 @@ class BoatAssembly {
         }
 
         if (selectedBoat.getBoatType().getType() == "High") {
-            System.out.println("Boat Type = High");
+
             boolean addParts = true;
             while (addParts) {
-                System.out.printf("\n\nEnter the name of the part you want to add \n\n" +
-                    "1 - Room | Options: Amount, Type, Theme\n" +
-                    "2 - Motor | Options: Engine, Type\n" +
-                    "3 - Wheel | Options: Material, Type\n" +
-                    "4 - Color\n" +
-                    "5 - Exhaust | Options: Type, Length\n\n" +
-                    "6 - Water Equipment | Options: Amount, Type, Theme\n" +
-                    "Type 'done' to finish.\n\n" +
-                    "Your input: ");
+                System.out.println("\n\n\n\n\n" + selectedBoat.getBoatType().getName() + " | Boat Type = High\n----------------------\n" +
+                        "1 - Room | Options: Amount, Type, Theme\n" +
+                        "2 - Motor | Options: Engine, Type\n" +
+                        "3 - Wheel | Options: Material, Type\n" +
+                        "4 - Color\n" +
+                        "5 - Exhaust | Options: Type, Length\n" +
+                        "6 - Water Equipment | Options: Amount, Type, Theme\n\n" +
+                        "Add a part by entering the corresponding number shown on-screen. Enter 'done' to finish.\nYour input: ");
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
                     case "room", "Room", "1":
