@@ -52,16 +52,19 @@ public class Main {
 
     private static void addNewCustomer(Customer customer, Scanner input) {
         while (true) {
-            System.out.printf("%n%n%n%nAdd New Customer Type%n----------------------%n" +
-                    "Input the name of the new Customer Type: ");
-            customer.setType(input.nextLine());
-            System.out.println("Entered: " + customer.getTypes().get(customer.getTypes().size() - 1));
-            System.out.printf("%nIs this correct?%n");
-            System.out.printf("%nYour input (Y/N): ");
-            if (input.nextLine().equalsIgnoreCase("y")) {
+            System.out.printf("%n%n%n%nAdd New Customer Type%n----------------------%n");
+            System.out.print("Input the name of the new Customer Type: ");
+            String newType = input.nextLine();
+            System.out.printf("Entered: %s%n", newType);
+            System.out.println("Is this correct?");
+
+            System.out.print("Your input (Y/N): ");
+            String confirmation = input.nextLine();
+
+            if (confirmation.equalsIgnoreCase("y")) {
+                customer.setType(newType);
                 break;
             } else {
-                customer.getTypes().remove(customer.getTypes().size() - 1);
                 System.out.println("Entered data has been wiped. Press Enter to try again.");
                 input.nextLine();
             }
@@ -153,12 +156,15 @@ public class Main {
 
     private static ArrayList<BoatType> getBoatTypes(BoatList boat) {
         System.out.printf("%n%n%n%nAdd Option to Existing Boat%n----------------------%n");
+
         ArrayList<BoatType> types = boat.getBoatTypes();
-        int i = 1;
-        for (BoatType type : types) {
-            System.out.printf("%d. %s%n", i++, type.getName());
+
+        for (int i = 0; i < types.size(); i++) {
+            System.out.printf("%d. %s%n", i + 1, types.get(i).getName());
         }
+
         System.out.print("\n\nSelect an option by choosing the corresponding number\nYour input: ");
+
         return types;
     }
 }

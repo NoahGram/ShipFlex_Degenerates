@@ -42,7 +42,7 @@ class BoatAssembly {
 
             boolean addParts = true;
             while (addParts) {
-                System.out.println("\n\n\n\n\n" + selectedBoat.getBoatType().getName() + " | Boat Type = High\n----------------------\n" +
+                System.out.print("\n\n\n\n\n" + selectedBoat.getBoatType().getName() + " | Boat Type = High\n----------------------\n" +
                         "1 - Room | Options: Amount, Type, Theme\n" +
                         "2 - Motor | Options: Engine, Type\n" +
                         "3 - Wheel | Options: Material, Type\n" +
