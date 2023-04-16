@@ -560,7 +560,6 @@ class BoatList {
         boatType.AddWater(jetski);
         boatType.AddWater(jetskiElectric);
         boatType.AddWater(tippingBucket);
-        boatType.AddWater(hottub);
         boatType.AddFlag(small);
         boatType.AddFlag(medium);
         boatType.AddFlag(big);
@@ -603,7 +602,6 @@ class BoatList {
         boatType.AddWater(jetski);
         boatType.AddWater(jetskiElectric);
         boatType.AddWater(tippingBucket);
-        boatType.AddWater(hottub);
         boatType.AddFlag(small);
         boatType.AddFlag(medium);
         boatType.AddFlag(big);
@@ -644,7 +642,6 @@ class BoatList {
         boatType.AddWater(jetski);
         boatType.AddWater(jetskiElectric);
         boatType.AddWater(tippingBucket);
-        boatType.AddWater(hottub);
         boatType.AddFlag(small);
         boatType.AddFlag(medium);
         boatType.AddFlag(big);
@@ -685,7 +682,6 @@ class BoatList {
         boatType.AddWater(jetski);
         boatType.AddWater(jetskiElectric);
         boatType.AddWater(tippingBucket);
-        boatType.AddWater(hottub);
         boatType.AddFlag(small);
         boatType.AddFlag(medium);
         boatType.AddFlag(big);
