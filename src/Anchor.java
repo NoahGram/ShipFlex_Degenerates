@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class AnchorSelector {
+class Anchor {
     Scanner input = new Scanner(System.in);
 
     public AnchorType selectAnchor(BoatType boatType) {

@@ -8,12 +8,12 @@ public class Main {
         BoatAssembly boatCreate = new BoatAssembly();
         Scanner input = new Scanner(System.in);
         BoatList boat = new BoatList();
-        MotorSelector motor = new MotorSelector();
-        WheelSelector wheel = new WheelSelector();
-        ExhaustSelector exhaust = new ExhaustSelector();
-        ColorSelector color = new ColorSelector();
-        RoomSelector room = new RoomSelector();
-        WaterSelector water = new WaterSelector();
+        Motor motor = new Motor();
+        Wheel wheel = new Wheel();
+        Exhaust exhaust = new Exhaust();
+        Color color = new Color();
+        Room room = new Room();
+        Water water = new Water();
 
         while (true) {
             printMainMenu();
@@ -66,7 +66,7 @@ public class Main {
         }
     }
 
-    private static void addNewOption(BoatAssembly boatCreate, Scanner input, BoatList boat, MotorSelector motor, WheelSelector wheel, ExhaustSelector exhaust, ColorSelector color, RoomSelector room, WaterSelector water) {
+    private static void addNewOption(BoatAssembly boatCreate, Scanner input, BoatList boat, Motor motor, Wheel wheel, Exhaust exhaust, Color color, Room room, Water water) {
         System.out.printf("%n%n%n%nAdd Option to Existing Boat%n----------------------%n");
 
         ArrayList<BoatType> types = boat.getBoatTypes();

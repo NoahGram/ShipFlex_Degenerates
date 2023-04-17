@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class ExhaustSelector {
+class Exhaust {
     Scanner input = new Scanner(System.in);
 
     public ExhaustType selectExhaust(BoatType boatType) {

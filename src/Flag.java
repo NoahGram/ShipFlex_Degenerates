@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class FlagSelector {
+class Flag {
     Scanner input = new Scanner(System.in);
 
     public FlagType selectFlag(BoatType boatType) {
