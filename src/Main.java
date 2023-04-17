@@ -18,21 +18,16 @@ public class Main {
         while (true) {
             printMainMenu();
             switch (input.nextLine()) {
-                case "1.", "1":
-                    customer.setCustomerInfo();
-                    break;
-                case "2.", "2":
-                    viewCustomer(customer, input);
-                    break;
-                case "3.", "3":
-                    boatAssemblyProgram(customer, boatCreate, input);
-                    break;
-                case "9.", "9":
+                case "1.", "1" -> customer.setCustomerInfo();
+                case "2.", "2" -> viewCustomer(customer, input);
+                case "3.", "3" -> boatAssemblyProgram(customer, boatCreate, input);
+                case "9.", "9" -> {
                     printAddOptions();
                     switch (input.nextInt()) {
                         case 1 -> addNewOption(boatCreate, input, boat, motor, wheel, exhaust, color, room, water);
                         case 2 -> addNewCustomer(customer, input);
                     }
+                }
             }
         }
     }
@@ -50,7 +45,7 @@ public class Main {
                 "Your input: ");
     }
 
-    private static void addNewCustomer(Customer customer, Scanner input) {
+    public static void addNewCustomer(Customer customer, Scanner input) {
         while (true) {
             System.out.printf("%n%n%n%nAdd New Customer Type%n----------------------%n");
             System.out.print("Input the name of the new Customer Type: ");
@@ -72,7 +67,15 @@ public class Main {
     }
 
     private static void addNewOption(BoatAssembly boatCreate, Scanner input, BoatList boat, MotorSelector motor, WheelSelector wheel, ExhaustSelector exhaust, ColorSelector color, RoomSelector room, WaterSelector water) {
-        ArrayList<BoatType> types = getBoatTypes(boat);
+        System.out.printf("%n%n%n%nAdd Option to Existing Boat%n----------------------%n");
+
+        ArrayList<BoatType> types = boat.getBoatTypes();
+
+        for (int i = 0; i < types.size(); i++) {
+            System.out.printf("%d. %s%n", i + 1, types.get(i).getName());
+        }
+
+        System.out.print("\n\nSelect an option by choosing the corresponding number\nYour input: ");
         int chosenBoat = input.nextInt() - 1;
 
         selectOption(types, chosenBoat);
@@ -152,19 +155,5 @@ public class Main {
             System.out.printf("%2d. %s%n", j + 1, options[j]);
         }
         System.out.printf("%nSelect an option by choosing the corresponding number%nYour input: ");
-    }
-
-    private static ArrayList<BoatType> getBoatTypes(BoatList boat) {
-        System.out.printf("%n%n%n%nAdd Option to Existing Boat%n----------------------%n");
-
-        ArrayList<BoatType> types = boat.getBoatTypes();
-
-        for (int i = 0; i < types.size(); i++) {
-            System.out.printf("%d. %s%n", i + 1, types.get(i).getName());
-        }
-
-        System.out.print("\n\nSelect an option by choosing the corresponding number\nYour input: ");
-
-        return types;
     }
 }

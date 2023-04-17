@@ -14,6 +14,7 @@ class BoatAssembly {
 
     Boat selectedBoat = null;
 
+
     public void boatAssemble() {
         System.out.println("\n\n\n\n\n\nBoat Assembly Program\n----------------------");
 
@@ -52,69 +53,36 @@ class BoatAssembly {
                         "Add a part by entering the corresponding number shown on-screen. Enter 'done' to finish.\nYour input: ");
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
-                    case "room", "Room", "1":
-                        selectedBoat.AddOption(roomSelector.selectRoom(selectedBoat.getBoatType()));
-                        break;
-                    case "motor", "Motor", "2":
-                        selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
-                        break;
-                    case "wheel", "Wheel", "3":
-                        selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
-                        break;
-                    case "color", "Color", "4":
-                        selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
-                        break;
-                    case "exhaust", "Exhaust", "5":
-                        selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
-                        break;
-                    case "water", "Water", "6":
-                        selectedBoat.AddOption(waterSelector.selectWater(selectedBoat.getBoatType()));
-                        break;
-                    case "done", "Done":
-                        addParts = false;
-                        break;
-                    default:
-                        System.out.println("Invalid part name. Try again by pressing enter.");
-                        input.nextLine();
-                        break;
+                    case "room", "Room", "1" -> selectedBoat.AddOption(roomSelector.selectRoom(selectedBoat.getBoatType()));
+                    case "motor", "Motor", "2" -> selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
+                    case "wheel", "Wheel", "3" -> selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
+                    case "color", "Color", "4" -> selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
+                    case "exhaust", "Exhaust", "5" -> selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
+                    case "water", "Water", "6" -> selectedBoat.AddOption(waterSelector.selectWater(selectedBoat.getBoatType()));
+                    case "done", "Done" -> addParts = false;
+                    default -> {System.out.println("Invalid part name. Try again by pressing enter."); input.nextLine(); }
                 }
             }
-        }else if(selectedBoat.getBoatType().getType() == "Medium") {
+        } else if(selectedBoat.getBoatType().getType() == "Medium") {
             System.out.println("Boat Type = Medium");
             boolean addParts = true;
             while (addParts) {
-                System.out.printf("\n\nEnter the name of the part you want to add \n\n" +
+                System.out.print("\n\nEnter the name of the part you want to add \n\n" +
                         "1 - Room | Options: Amount, Type, Theme\n" +
                         "2 - Motor | Options: Engine, Type\n" +
                         "3 - Wheel | Options: Material, Type\n" +
                         "4 - Color\n" +
                         "5 - Exhaust | Options: Type, Length\n\n" +
-                        "Type 'done' to finish.\n\n" +
-                        "Your input: ");
+                        "Add a part by entering the corresponding number shown on-screen. Enter 'done' to finish.\nYour input: ");
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
-                    case "room", "Room", "1":
-                        selectedBoat.AddOption(roomSelector.selectRoom(selectedBoat.getBoatType()));
-                        break;
-                    case "motor", "Motor", "2":
-                        selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
-                        break;
-                    case "wheel", "Wheel", "3":
-                        selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
-                        break;
-                    case "color", "Color", "4":
-                        selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
-                        break;
-                    case "exhaust", "Exhaust", "5":
-                        selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
-                        break;
-                    case "done", "Done":
-                        addParts = false;
-                        break;
-                    default:
-                        System.out.println("Invalid part name. Try again by pressing enter.");
-                        input.nextLine();
-                        break;
+                    case "room", "Room", "1" -> selectedBoat.AddOption(roomSelector.selectRoom(selectedBoat.getBoatType()));
+                    case "motor", "Motor", "2" -> selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
+                    case "wheel", "Wheel", "3" -> selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
+                    case "color", "Color", "4" -> selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
+                    case "exhaust", "Exhaust", "5" -> selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
+                    case "done", "Done" -> addParts = false;
+                    default -> { System.out.print("Invalid part name. Try again by pressing enter."); input.nextLine(); }
                 }
             }
         }else if(selectedBoat.getBoatType().getType() == "Low") {
@@ -126,29 +94,15 @@ class BoatAssembly {
                         "2 - Wheel | Options: Material, Type\n" +
                         "3 - Color\n" +
                         "4 - Exhaust | Options: Type, Length\n\n" +
-                        "Type 'done' to finish.\n\n" +
-                        "Your input: ");
+                        "Add a part by entering the corresponding number shown on-screen. Enter 'done' to finish.\nYour input: ");
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
-                    case "motor", "Motor", "1":
-                        selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
-                        break;
-                    case "wheel", "Wheel", "2":
-                        selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
-                        break;
-                    case "color", "Color", "3":
-                        selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
-                        break;
-                    case "exhaust", "Exhaust", "4":
-                        selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
-                        break;
-                    case "done", "Done":
-                        addParts = false;
-                        break;
-                    default:
-                        System.out.println("Invalid part name. Try again by pressing enter.");
-                        input.nextLine();
-                        break;
+                    case "motor", "Motor", "1" -> selectedBoat.AddOption(motorSelector.selectMotor(selectedBoat.getBoatType()));
+                    case "wheel", "Wheel", "2" -> selectedBoat.AddOption(wheelSelector.selectWheel(selectedBoat.getBoatType()));
+                    case "color", "Color", "3" -> selectedBoat.AddOption(colorSelector.selectColor(selectedBoat.getBoatType()));
+                    case "exhaust", "Exhaust", "4" -> selectedBoat.AddOption(exhaustSelector.selectExhaust(selectedBoat.getBoatType()));
+                    case "done", "Done" -> addParts = false;
+                    default -> { System.out.println("Invalid part name. Try again by pressing enter."); input.nextLine();}
                 }
             }
         }
