@@ -4,14 +4,14 @@ class BoatAssembly {
     Scanner input = new Scanner(System.in);
 
     BoatList boatList = new BoatList();
-    Room room = new Room();
+    RoomTypePicker room = new RoomTypePicker();
     Wheel wheel = new Wheel();
     Color color = new Color();
-    Exhaust exhaust = new Exhaust();
-    Water water = new Water();
+    ExhaustTypePicker exhaust = new ExhaustTypePicker();
+    WaterPicker water = new WaterPicker();
     Customer customer = new Customer();
-    Motor motor = new Motor();
-    Flag flag = new Flag();
+    MotorTypePicker motor = new MotorTypePicker();
+    FlagTypePicker flagPicker = new FlagTypePicker();
     Anchor anchor = new Anchor();
 
     Boat selectedBoat = null;
@@ -63,7 +63,7 @@ class BoatAssembly {
                     case "color", "Color", "4" -> selectedBoat.AddOption(color.selectColor(selectedBoat.getBoatType()));
                     case "exhaust", "Exhaust", "5" -> selectedBoat.AddOption(exhaust.selectExhaust(selectedBoat.getBoatType()));
                     case "water", "Water", "6" -> selectedBoat.AddOption(water.selectWater(selectedBoat.getBoatType()));
-                    case "flag", "Flag", "7" -> selectedBoat.AddOption(flag.selectFlag(selectedBoat.getBoatType()));
+                    case "flag", "Flag", "7" -> selectedBoat.AddOption(flagPicker.selectFlag(selectedBoat.getBoatType()));
                     case "anchor", "Anchor", "8" -> selectedBoat.AddOption(anchor.selectAnchor(selectedBoat.getBoatType()));
                     case "done", "Done" -> addParts = false;
                     default -> {System.out.println("Invalid part name. Try again by pressing enter."); input.nextLine(); }
@@ -89,7 +89,7 @@ class BoatAssembly {
                     case "wheel", "Wheel", "3" -> selectedBoat.AddOption(wheel.selectWheel(selectedBoat.getBoatType()));
                     case "color", "Color", "4" -> selectedBoat.AddOption(color.selectColor(selectedBoat.getBoatType()));
                     case "exhaust", "Exhaust", "5" -> selectedBoat.AddOption(exhaust.selectExhaust(selectedBoat.getBoatType()));
-                    case "flag", "Flag", "6" -> selectedBoat.AddOption(flag.selectFlag(selectedBoat.getBoatType()));
+                    case "flag", "Flag", "6" -> selectedBoat.AddOption(flagPicker.selectFlag(selectedBoat.getBoatType()));
                     case "anchor", "Anchor", "7" -> selectedBoat.AddOption(anchor.selectAnchor(selectedBoat.getBoatType()));
                     case "done", "Done" -> addParts = false;
                     default -> { System.out.print("Invalid part name. Try again by pressing enter."); input.nextLine(); }
@@ -113,7 +113,7 @@ class BoatAssembly {
                     case "wheel", "Wheel", "2" -> selectedBoat.AddOption(wheel.selectWheel(selectedBoat.getBoatType()));
                     case "color", "Color", "3" -> selectedBoat.AddOption(color.selectColor(selectedBoat.getBoatType()));
                     case "exhaust", "Exhaust", "4" -> selectedBoat.AddOption(exhaust.selectExhaust(selectedBoat.getBoatType()));
-                    case "flag", "Flag", "5" -> selectedBoat.AddOption(flag.selectFlag(selectedBoat.getBoatType()));
+                    case "flag", "Flag", "5" -> selectedBoat.AddOption(flagPicker.selectFlag(selectedBoat.getBoatType()));
                     case "anchor", "Anchor", "6" -> selectedBoat.AddOption(anchor.selectAnchor(selectedBoat.getBoatType()));
                     case "done", "Done" -> addParts = false;
                     default -> { System.out.println("Invalid part name. Try again by pressing enter."); input.nextLine();}
@@ -123,6 +123,7 @@ class BoatAssembly {
     }
 
     public void boatOfferte(Customer customer) {
-        selectedBoat.boatSummary(customer);
+        selectedBoat.SetCustomer(customer);
+        selectedBoat.boatSummary();
     }
 }

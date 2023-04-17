@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Motor {
+class MotorTypePicker {
     Scanner input = new Scanner(System.in);
 
     public MotorType selectMotor(BoatType boatType) {

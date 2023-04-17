@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Room {
+class RoomTypePicker {
     Scanner input = new Scanner(System.in);
 
     public RoomType selectRoom(BoatType boatType) {

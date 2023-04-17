@@ -2,10 +2,15 @@ import java.util.ArrayList;
 
 class Boat {
     private BoatType boatType;
+    private Customer customer;
     private ArrayList<BoatOption> options = new ArrayList<BoatOption>();
 
     public Boat(BoatType boatType) {
         this.boatType = boatType;
+    }
+
+    public void SetCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public void AddOption(BoatOption option) {
@@ -20,17 +25,17 @@ class Boat {
         return options;
     }
 
-    public void boatSummary(Customer customer) {
+    public void boatSummary() {
         System.out.println("Boat Type: "+ boatType.getName());
         System.out.println("Base Price: $"+ boatType.getPrice() +"\n");
         System.out.println("Selected Options:");
         for (BoatOption option : options) {
             System.out.println("- "+ option.getName()+ ": $"+ option.getPrice());
         }
-        System.out.println("\nTotal Price: $"+ getTotalCost(customer));
+        System.out.println("\nTotal Price: $"+ getTotalCost());
     }
 
-    public double getTotalCost(Customer customer) {
+    public double getTotalCost() {
         double totalCost = 0.0;
         double discount = 0;
 
@@ -38,9 +43,12 @@ class Boat {
         for (BoatOption boatOption : options) {
             totalCost += boatOption.getPrice();
         }
-        String customerType = customer.getCustomer().get(0).getType();
 
-        if (customerType.equals("Business") || customerType.equals("business") || customerType.equals("1")) {
+        String customerType = customer.getType();
+        if (customerType == null) {
+            return totalCost;
+        }
+        else if (customerType.equals("Business") || customerType.equals("business") || customerType.equals("1")) {
             discount = 0.1 * totalCost;
             return totalCost - discount;
         }else if(customerType.equals("Private") || customerType.equals("private") || customerType.equals("2")) {

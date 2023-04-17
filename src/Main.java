@@ -2,18 +2,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
 public class Main {
     public static void main(String[] args) {
         Customer customer = new Customer();
         BoatAssembly boatCreate = new BoatAssembly();
         Scanner input = new Scanner(System.in);
         BoatList boat = new BoatList();
-        Motor motor = new Motor();
+        MotorTypePicker motor = new MotorTypePicker();
         Wheel wheel = new Wheel();
-        Exhaust exhaust = new Exhaust();
+        ExhaustTypePicker exhaust = new ExhaustTypePicker();
         Color color = new Color();
-        Room room = new Room();
-        Water water = new Water();
+        RoomTypePicker room = new RoomTypePicker();
+        WaterPicker water = new WaterPicker();
 
         while (true) {
             printMainMenu();
@@ -66,7 +67,7 @@ public class Main {
         }
     }
 
-    private static void addNewOption(BoatAssembly boatCreate, Scanner input, BoatList boat, Motor motor, Wheel wheel, Exhaust exhaust, Color color, Room room, Water water) {
+    private static void addNewOption(BoatAssembly boatCreate, Scanner input, BoatList boat, MotorTypePicker motor, Wheel wheel, ExhaustTypePicker exhaust, Color color, RoomTypePicker room, WaterPicker water) {
         System.out.printf("%n%n%n%nAdd Option to Existing Boat%n----------------------%n");
 
         ArrayList<BoatType> types = boat.getBoatTypes();

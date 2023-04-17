@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Water {
+class WaterPicker {
     Scanner input = new Scanner(System.in);
 
     public WaterType selectWater(BoatType boatType) {
