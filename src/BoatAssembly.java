@@ -52,8 +52,8 @@ class BoatAssembly {
                     "4 - Color\n" +
                     "5 - Exhaust | Options: Type\n" +
                     "6 - Water Equipment | Options: Type\n\n" +
-                    "7 - Flag | Options: Size\n\n" +
-                    "8 - Anchor | Options: Type\n\n" +
+                    "7 - Flag | Options: Size\n" +
+                    "8 - Anchor | Options: Type\n" +
                     "Add a part by entering the corresponding number shown on-screen. Enter 'done' to finish.\nYour input: ");
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
@@ -79,8 +79,8 @@ class BoatAssembly {
                     "3 - Wheel | Options: Material\n" +
                     "4 - Color\n" +
                     "5 - Exhaust | Options: Type\n" +
-                    "6 - Flag | Options: Size\n\n" +
-                    "7 - Anchor | Options: Type\n\n" +
+                    "6 - Flag | Options: Size\n" +
+                    "7 - Anchor | Options: Type\n" +
                     "Add a part by entering the corresponding number shown on-screen. Enter 'done' to finish.\nYour input: ");
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {
@@ -104,8 +104,8 @@ class BoatAssembly {
                     "2 - Wheel | Options: Material\n" +
                     "3 - Color\n" +
                     "4 - Exhaust | Options: Type\n" +
-                    "5 - Flag | Options: Size\n\n" +
-                    "6 - Anchor | Options: Type\n\n" +
+                    "5 - Flag | Options: Size\n" +
+                    "6 - Anchor | Options: Type\n" +
                     "Add a part by entering the corresponding number shown on-screen. Enter 'done' to finish.\nYour input: ");
                 String part = input.nextLine();
                 switch (part.toLowerCase()) {

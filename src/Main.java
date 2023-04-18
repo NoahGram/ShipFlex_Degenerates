@@ -19,7 +19,7 @@ public class Main {
         while (true) {
             printMainMenu();
             switch (input.nextLine()) {
-                case "1.", "1" -> customer.setCustomerInfo();
+                case "1.", "1" -> customer.setCustomerInfo2();
                 case "2.", "2" -> viewCustomer(customer, input);
                 case "3.", "3" -> boatAssemblyProgram(customer, boatCreate, input);
                 case "9.", "9" -> {
