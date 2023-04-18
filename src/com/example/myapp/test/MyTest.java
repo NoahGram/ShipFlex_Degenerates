@@ -12,8 +12,9 @@ public class MyTest {
         String expected = "Private";
         assertEquals(expected, actual);
     }
+
     @Test
-    void testExhaustTypePicker() {
+    void testBoatPicker() {
         Boat boat = null;
         BoatList boatList = new BoatList();
         int boatTypeName = 11; // Use a boat type number that exists in the BoatList
