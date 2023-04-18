@@ -5,14 +5,14 @@ class BoatAssembly {
 
     BoatList boatList = new BoatList();
     RoomTypePicker room = new RoomTypePicker();
-    Wheel wheel = new Wheel();
-    Color color = new Color();
+    WheelTypePicker wheel = new WheelTypePicker();
+    ColorTypePicker color = new ColorTypePicker();
     ExhaustTypePicker exhaust = new ExhaustTypePicker();
     WaterPicker water = new WaterPicker();
     Customer customer = new Customer();
     MotorTypePicker motor = new MotorTypePicker();
     FlagTypePicker flagPicker = new FlagTypePicker();
-    Anchor anchor = new Anchor();
+    AnchorTypePicker anchor = new AnchorTypePicker();
 
     Boat selectedBoat = null;
 

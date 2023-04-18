@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Color {
+class ColorTypePicker {
     Scanner input = new Scanner(System.in);
 
     public ColorType selectColor(BoatType boatType) {

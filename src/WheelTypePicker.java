@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Wheel {
+class WheelTypePicker {
     Scanner input = new Scanner(System.in);
 
     public SteeringWheelType selectWheel(BoatType boatType) {
