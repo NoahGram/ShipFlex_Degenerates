@@ -19,7 +19,7 @@ public class Main {
         while (true) {
             printMainMenu();
             switch (input.nextLine()) {
-                case "1.", "1" -> customer.setCustomerInfo2();
+                case "1.", "1" -> customer.setCustomerInfo();
                 case "2.", "2" -> viewCustomer(customer, input);
                 case "3.", "3" -> boatAssemblyProgram(customer, boatCreate, input);
                 case "9.", "9" -> {
@@ -49,21 +49,29 @@ public class Main {
     public static void addNewCustomer(Customer customer, Scanner input) {
         while (true) {
             System.out.printf("%n%n%n%nAdd New Customer Type%n----------------------%n");
+            input.nextLine();
             System.out.print("Input the name of the new Customer Type: ");
-            String newType = input.nextLine();
-            System.out.printf("Entered: %s%n", newType);
-            System.out.println("Is this correct?");
-
-            System.out.print("Your input (Y/N): ");
+            String newTypeName = input.nextLine();
+            System.out.print("Input the discount amount of the new Customer Type (in percentage): ");
+            Double newTypeDiscount = input.nextDouble();
+            input.nextLine(); // Consume newline character
+            System.out.print("Input if the new Customer Type is a business (true/false): ");
+            Boolean newTypeIsBusiness = input.nextBoolean();
+            input.nextLine(); // Consume newline character
+            System.out.printf("%nName: %s%nDiscount: %s%nIs a Business: %s%n%n", newTypeName, newTypeDiscount, newTypeIsBusiness);
+            System.out.print("Is this correct?\nYour input (Y/N/break): ");
             String confirmation = input.nextLine();
 
             if (confirmation.equalsIgnoreCase("y")) {
-                customer.setType(newType);
+                customer.setType(newTypeName, newTypeDiscount/100, newTypeIsBusiness);
+                break;
+            } else if (confirmation.equalsIgnoreCase("break")) {
                 break;
             } else {
                 System.out.println("Entered data has been wiped. Press Enter to try again.");
                 input.nextLine();
             }
+
         }
     }
 

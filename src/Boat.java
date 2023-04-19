@@ -32,34 +32,19 @@ class Boat {
         for (BoatOption option : options) {
             System.out.println("- "+ option.getName()+ ": $"+ option.getPrice());
         }
-        System.out.println("\nTotal Price: $"+ getTotalCost());
+        System.out.println("\nApplied discount: " + customer.getDiscounts().get(Integer.parseInt(customer.getCustomer().get(customer.getCustomer().size()-1).getType())-1)*100 + "%");
+        System.out.println("Total Price: $"+ getTotalCost());
     }
 
     public double getTotalCost() {
         double totalCost = 0.0;
-        double discount = 0;
+        double discount = customer.getDiscounts().get(customer.getCustomerTypes().size()-1);
 
         totalCost += boatType.getPrice();
         for (BoatOption boatOption : options) {
             totalCost += boatOption.getPrice();
         }
 
-        String customerType = customer.getType();
-        if (customerType == null) {
-            return totalCost;
-        }
-        else if (customerType.equals("Business") || customerType.equals("business") || customerType.equals("1")) {
-            discount = 0.1 * totalCost;
-            return totalCost - discount;
-        }else if(customerType.equals("Private") || customerType.equals("private") || customerType.equals("2")) {
-            discount = 0.5 * totalCost;
-            return totalCost - discount;
-        }else if(customerType.equals("Government") || customerType.equals("government") || customerType.equals("3")) {
-            discount = 0.2 * totalCost;
-            return totalCost - discount;
-        }else{
-            System.out.println("Error No Customer Type Selected.\n");
-        }
-        return totalCost;
+        return totalCost - (totalCost * discount);
     }
 }
