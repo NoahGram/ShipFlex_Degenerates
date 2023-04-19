@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
 public class MyTest {
+    //Create a new customer instance and check if it works.
     @Test
     void testCustomerTypes() {
         Customer customer = new Customer();
@@ -11,6 +12,7 @@ public class MyTest {
         assertEquals(expected, actual);
     }
 
+    //Selects a boat and tests it with the expected result.
     @Test
     void testBoatPicker() {
         Boat boat = null;
@@ -29,6 +31,7 @@ public class MyTest {
         assertEquals(expected, actual);
     }
 
+    //Tests to see if you can create a boattype instance without errors.
     @Test
     void CreateBoatAssemblyWithCustomerIsSucces() {
         assertDoesNotThrow(() -> {
@@ -39,6 +42,7 @@ public class MyTest {
         });
     }
 
+    //Tests to see of you can combine boatOptions to a boattype
     @Test
     void CreateNewBoat() {
         assertDoesNotThrow(() -> {
