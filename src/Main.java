@@ -15,6 +15,8 @@ public class Main {
         ColorTypePicker color = new ColorTypePicker();
         RoomTypePicker room = new RoomTypePicker();
         WaterPicker water = new WaterPicker();
+        FlagTypePicker flag = new FlagTypePicker();
+        AnchorTypePicker anchor = new AnchorTypePicker();
 
         while (true) {
             printMainMenu();
@@ -25,7 +27,7 @@ public class Main {
                 case "9.", "9" -> {
                     printAddOptions();
                     switch (input.nextInt()) {
-                        case 1 -> addNewOption(boatCreate, input, boat, motor, wheel, exhaust, color, room, water);
+                        case 1 -> addNewOption(boatCreate, input, boat, motor, wheel, exhaust, color, room, water, flag, anchor);
                         case 2 -> addNewCustomer(customer, input);
                     }
                 }
@@ -54,10 +56,10 @@ public class Main {
             String newTypeName = input.nextLine();
             System.out.print("Input the discount amount of the new Customer Type (in percentage): ");
             Double newTypeDiscount = input.nextDouble();
-            input.nextLine(); // Consume newline character
+            input.nextLine();
             System.out.print("Input if the new Customer Type is a business (true/false): ");
             Boolean newTypeIsBusiness = input.nextBoolean();
-            input.nextLine(); // Consume newline character
+            input.nextLine();
             System.out.printf("%nName: %s%nDiscount: %s%nIs a Business: %s%n%n", newTypeName, newTypeDiscount, newTypeIsBusiness);
             System.out.print("Is this correct?\nYour input (Y/N/break): ");
             String confirmation = input.nextLine();
@@ -75,7 +77,7 @@ public class Main {
         }
     }
 
-    private static void addNewOption(BoatAssembly boatCreate, Scanner input, BoatList boat, MotorTypePicker motor, WheelTypePicker wheel, ExhaustTypePicker exhaust, ColorTypePicker color, RoomTypePicker room, WaterPicker water) {
+    private static void addNewOption(BoatAssembly boatCreate, Scanner input, BoatList boat, MotorTypePicker motor, WheelTypePicker wheel, ExhaustTypePicker exhaust, ColorTypePicker color, RoomTypePicker room, WaterPicker water, FlagTypePicker flag, AnchorTypePicker anchor) {
         System.out.printf("%n%n%n%nAdd Option to Existing Boat%n----------------------%n");
 
         ArrayList<BoatType> types = boat.getBoatTypes();
@@ -95,8 +97,10 @@ public class Main {
             case 2 -> wheel.addWheel(boatCreate, types, chosenBoat);
             case 3 -> color.addColor(boatCreate, types, chosenBoat);
             case 4 -> exhaust.addExhaust(boatCreate, types, chosenBoat);
-            case 5 -> room.addRoom(boatCreate, types, chosenBoat);
-            case 6 -> water.addWater(boatCreate, types, chosenBoat);
+            case 5 -> flag.addFlag(boatCreate, types, chosenBoat);
+            case 6 -> anchor.addAnchor(boatCreate, types, chosenBoat);
+            case 7 -> room.addRoom(boatCreate, types, chosenBoat);
+            case 8 -> water.addWater(boatCreate, types, chosenBoat);
         }
     }
 
@@ -121,7 +125,6 @@ public class Main {
                 case "9", "9." -> bap = false;
             }
         }
-        return;
     }
 
     private static void getSummary(Customer customer, BoatAssembly boatCreate, Scanner input) {
@@ -134,7 +137,7 @@ public class Main {
             System.out.println("No created boat found.");
         }
 
-        System.out.printf("----------------------\nFilled out as intended? (Y/N): ");
+        System.out.printf("%n----------------------\nFilled out as intended? (Y/N): ");
         if (input.nextLine().equalsIgnoreCase("y")) {
             System.exit(0);
         }
@@ -143,12 +146,12 @@ public class Main {
     private static void viewBoat(Customer customer, BoatAssembly boatCreate, Scanner input) {
         System.out.printf("%n%n%n%nView Boat%n----------------------%n");
         boatCreate.boatOfferte(customer);
-        System.out.printf("----------------------%n%nPress Enter to continue");
+        System.out.printf("%n----------------------%n%nPress Enter to continue");
         input.nextLine();
     }
 
     private static void selectOption(ArrayList<BoatType> types, int chosenBoat) {
-        String[] options = {"Motor", "Wheel", "Color", "Exhaust"};
+        String[] options = {"Motor", "Wheel", "Color", "Exhaust", "Flag", "Anchor"};
         String boatType = types.get(chosenBoat).getType().toLowerCase();
         if (boatType.equalsIgnoreCase("medium") || boatType.equalsIgnoreCase("high")) {
             options = Arrays.copyOf(options, options.length + 1);

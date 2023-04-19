@@ -57,16 +57,18 @@ public class Customer {
                 businessName = input.nextLine();
             }
 
-            System.out.println("\n----------------------\nType: " + types.get(Integer.parseInt(customerType)-1) + "\nName: " + customerName + "\nApplied discount: " + discounts.get(Integer.parseInt(customerType)-1)*100 + "%\nIs a business: " + isBusiness.get(Integer.parseInt(customerType)-1));
+            System.out.println("\n----------------------\nType: " + types.get(Integer.parseInt(customerType)-1) + "\nName: " + customerName + "\nApplied discount: " + discounts.get(Integer.parseInt(customerType)-1)*100);
             if (businessName.isEmpty()) { }
             else { System.out.println("Business: " + businessName); }
             System.out.printf("%nIs this correct?%n");
-            System.out.printf("%nYour input (Y/N): ");
-            if (input.nextLine().equalsIgnoreCase("y")) {
+            System.out.printf("%nYour input (Y/N/break): ");
+            String entered = input.nextLine();
+            if (entered.equalsIgnoreCase("y")) {
                 customer.add(new Customer(customerName, businessName, customerType));
                 break;
-            }
-            else {
+            } else if (entered.equalsIgnoreCase("break")) {
+                break;
+            } else {
                 System.out.print("\nEntered data has been wiped. Press Enter to try again.");
                 input.nextLine();
             }

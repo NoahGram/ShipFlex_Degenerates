@@ -33,12 +33,12 @@ class Boat {
             System.out.println("- "+ option.getName()+ ": $"+ option.getPrice());
         }
         System.out.println("\nApplied discount: " + customer.getDiscounts().get(Integer.parseInt(customer.getCustomer().get(customer.getCustomer().size()-1).getType())-1)*100 + "%");
-        System.out.println("Total Price: $"+ getTotalCost());
+        System.out.printf("Total Price: $%.2f", getTotalCost());
     }
 
     public double getTotalCost() {
         double totalCost = 0.0;
-        double discount = customer.getDiscounts().get(customer.getCustomerTypes().size()-1);
+        double discount = customer.getDiscounts().get(Integer.parseInt(customer.getCustomer().get(customer.getCustomer().size()-1).getType())-1);
 
         totalCost += boatType.getPrice();
         for (BoatOption boatOption : options) {
