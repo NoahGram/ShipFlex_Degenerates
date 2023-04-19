@@ -5,25 +5,29 @@ class ColorTypePicker {
     Scanner input = new Scanner(System.in);
 
     public ColorType selectColor(BoatType boatType) {
-        System.out.printf("\nEnter the Color you want to add: \n\n");
-        ArrayList<ColorType> colorTypes = boatType.getColorTypes();
+        ArrayList<ColorType> ColorTypes = boatType.getColorTypes();
 
-        for (ColorType colorType : colorTypes) {
-            System.out.printf(colorType.getNumber() + " - " + colorType.getName() + " $" + colorType.getPrice() + " \n");
-        }
-        System.out.printf(
-            "Type 'done' to finish.\n\n" +
-            "Your input: ");
+        while (true) {
+            System.out.printf("\n\n\n\n\n\nColor\n----------------------\n");
+            for (ColorType ColorType : ColorTypes) {
+                System.out.printf(ColorType.getNumber() + " - " + ColorType.getName() + " $" + ColorType.getPrice() + " \n");
+            }
+            System.out.print("\nPick a Color by entering the corresponding number shown on-screen\nYour input: ");
+            int chosenColorType;
+            chosenColorType = input.nextInt();
 
-        int chosenColorType = input.nextInt();
-
-        for (ColorType colorType : colorTypes) {
-            if (colorType.getNumber() == (chosenColorType)) {
-                return colorType;
+            if (chosenColorType < 0 || chosenColorType > ColorTypes.size()) {
+                input.nextLine();
+                System.out.printf("\nInvalid input. Please choose a number between 1 and %d.%nPress Enter to try again", ColorTypes.size());
+                input.nextLine();
+            } else {
+                for (ColorType ColorType : ColorTypes) {
+                    if (ColorType.getNumber() == (chosenColorType)) {
+                        return ColorType;
+                    }
+                }
             }
         }
-
-        return null;
     }
 
     public void addColor(BoatAssembly boatCreate, ArrayList<BoatType> types, int i) {

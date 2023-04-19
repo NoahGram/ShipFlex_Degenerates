@@ -26,14 +26,22 @@ class Boat {
     }
 
     public void boatSummary() {
-        System.out.println("Boat Type: "+ boatType.getName());
-        System.out.println("Base Price: $"+ boatType.getPrice() +"\n");
-        System.out.println("Selected Options:");
-        for (BoatOption option : options) {
-            System.out.println("- "+ option.getName()+ ": $"+ option.getPrice());
+        try {
+            System.out.println("Boat Type: "+ boatType.getName());
+            System.out.println("Base Price: $"+ boatType.getPrice() +"\n");
+            System.out.println("Selected Options:");
+            for (BoatOption option : options) {
+                System.out.println("- "+ option.getName()+ ": $"+ option.getPrice());
+            }
+        } catch (Exception e) {
+            System.out.println("No boat found!");
         }
-        System.out.println("\nApplied discount: " + customer.getDiscounts().get(Integer.parseInt(customer.getCustomer().get(customer.getCustomer().size()-1).getType())-1)*100 + "%");
-        System.out.printf("Total Price: $%.2f", getTotalCost());
+        try {
+            System.out.println("\nApplied discount: " + customer.getDiscounts().get(Integer.parseInt(customer.getCustomer().get(customer.getCustomer().size()-1).getType())-1)*100 + "%");
+            System.out.printf("Total Price: $%.2f", getTotalCost());
+        } catch (Exception e) {
+            System.out.print("\nUnable to calculate a Total Price without a Customer!");
+        }
     }
 
     public double getTotalCost() {

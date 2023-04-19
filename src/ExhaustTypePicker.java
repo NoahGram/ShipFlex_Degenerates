@@ -5,25 +5,29 @@ class ExhaustTypePicker {
     Scanner input = new Scanner(System.in);
 
     public ExhaustType selectExhaust(BoatType boatType) {
-        System.out.printf("\nEnter the Exhaust you want to add: \n\n");
-        ArrayList<ExhaustType> exhaustTypes = boatType.getExhaustTypes();
+        ArrayList<ExhaustType> ExhaustTypes = boatType.getExhaustTypes();
 
-        for (ExhaustType exhaustType : exhaustTypes) {
-            System.out.printf(exhaustType.getNumber() + " - " + exhaustType.getName() + " $" + exhaustType.getPrice() + " \n");
-        }
-        System.out.printf(
-            "Type 'done' to finish.\n\n" +
-            "Your input: ");
+        while (true) {
+            System.out.printf("\n\n\n\n\n\nExhaust\n----------------------\n");
+            for (ExhaustType ExhaustType : ExhaustTypes) {
+                System.out.printf(ExhaustType.getNumber() + " - " + ExhaustType.getName() + " $" + ExhaustType.getPrice() + " \n");
+            }
+            System.out.print("\nPick an Exhaust by entering the corresponding number shown on-screen\nYour input: ");
+            int chosenExhaustType;
+            chosenExhaustType = input.nextInt();
 
-        int chosenExhaustType = input.nextInt();
-
-        for (ExhaustType exhaustType : exhaustTypes) {
-            if (exhaustType.getNumber() == (chosenExhaustType)) {
-                return exhaustType;
+            if (chosenExhaustType < 0 || chosenExhaustType > ExhaustTypes.size()) {
+                input.nextLine();
+                System.out.printf("\nInvalid input. Please choose a number between 1 and %d.%nPress Enter to try again", ExhaustTypes.size());
+                input.nextLine();
+            } else {
+                for (ExhaustType ExhaustType : ExhaustTypes) {
+                    if (ExhaustType.getNumber() == (chosenExhaustType)) {
+                        return ExhaustType;
+                    }
+                }
             }
         }
-
-        return null;
     }
 
     public void addExhaust(BoatAssembly boatCreate, ArrayList<BoatType> types, int i) {
@@ -38,7 +42,7 @@ class ExhaustTypePicker {
         String partName = input.nextLine();
         System.out.println("\nName: " + partName + "\nPrice: " + partPrice + "\n\nPress Enter to continue");
         input.nextLine();
-        ExhaustType newPart = new ExhaustType(partName, boatCreate.boatList.getBoatTypes().get(i).getColorTypes().size()+1, partPrice);
+        ExhaustType newPart = new ExhaustType(partName, boatCreate.boatList.getBoatTypes().get(i).getExhaustTypes().size()+1, partPrice);
         boatCreate.boatList.getBoatTypes().get(i).AddExhaust(newPart);
     }
 }

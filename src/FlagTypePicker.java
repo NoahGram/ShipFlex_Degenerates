@@ -5,25 +5,29 @@ class FlagTypePicker {
     Scanner input = new Scanner(System.in);
 
     public FlagType selectFlag(BoatType boatType) {
-        System.out.printf("\nEnter the flag you want to add: \n\n");
-        ArrayList<FlagType> flagTypes = boatType.getFlagTypes();
+        ArrayList<FlagType> FlagTypes = boatType.getFlagTypes();
 
-        for (FlagType flagType : flagTypes) {
-            System.out.printf(flagType.getNumber() + " - " + flagType.getName() + " $" + flagType.getPrice() + " \n");
-        }
-        System.out.printf(
-                "Type 'done' to finish.\n\n" +
-                        "Your input: ");
+        while (true) {
+            System.out.print("\n\n\n\n\n\nFlag\n----------------------\n");
+            for (FlagType FlagType : FlagTypes) {
+                System.out.printf(FlagType.getNumber() + " - " + FlagType.getName() + " $" + FlagType.getPrice() + " \n");
+            }
+            System.out.print("\nPick a Flag by entering the corresponding number shown on-screen\nYour input: ");
+            int chosenFlagType;
+            chosenFlagType = input.nextInt();
 
-        int chosenFlagType = input.nextInt();
-
-        for (FlagType flagType : flagTypes) {
-            if (flagType.getNumber() == (chosenFlagType)) {
-                return flagType;
+            if (chosenFlagType < 0 || chosenFlagType > FlagTypes.size()) {
+                input.nextLine();
+                System.out.printf("\nInvalid input. Please choose a number between 1 and %d.%nPress Enter to try again", FlagTypes.size());
+                input.nextLine();
+            } else {
+                for (FlagType FlagType : FlagTypes) {
+                    if (FlagType.getNumber() == (chosenFlagType)) {
+                        return FlagType;
+                    }
+                }
             }
         }
-
-        return null;
     }
 
     public void addFlag(BoatAssembly boatCreate, ArrayList<BoatType> types, int i) {

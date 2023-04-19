@@ -5,25 +5,29 @@ class MotorTypePicker {
     Scanner input = new Scanner(System.in);
 
     public MotorType selectMotor(BoatType boatType) {
-        System.out.printf("\nEnter the motor you want to add: \n\n");
-        ArrayList<MotorType> motorTypes = boatType.getMotorTypes();
+        ArrayList<MotorType> MotorTypes = boatType.getMotorTypes();
 
-        for (MotorType motorType : motorTypes) {
-            System.out.printf(motorType.getNumber() + " - " + motorType.getName() + " $" + motorType.getPrice() + " \n");
-        }
-        System.out.printf(
-            "Type 'done' to finish.\n\n" +
-            "Your input: ");
+        while (true) {
+            System.out.print("\n\n\n\n\n\nMotor\n----------------------\n");
+            for (MotorType MotorType : MotorTypes) {
+                System.out.printf(MotorType.getNumber() + " - " + MotorType.getName() + " $" + MotorType.getPrice() + " \n");
+            }
+            System.out.print("\nPick a Motor by entering the corresponding number shown on-screen\nYour input: ");
+            int chosenMotorType;
+            chosenMotorType = input.nextInt();
 
-        int chosenMotorType = input.nextInt();
-
-        for (MotorType motorType : motorTypes) {
-            if (motorType.getNumber() == (chosenMotorType)) {
-                return motorType;
+            if (chosenMotorType < 0 || chosenMotorType > MotorTypes.size()) {
+                input.nextLine();
+                System.out.printf("\nInvalid input. Please choose a number between 1 and %d.%nPress Enter to try again", MotorTypes.size());
+                input.nextLine();
+            } else {
+                for (MotorType MotorType : MotorTypes) {
+                    if (MotorType.getNumber() == (chosenMotorType)) {
+                        return MotorType;
+                    }
+                }
             }
         }
-
-        return null;
     }
 
     public void addMotor(BoatAssembly boatCreate, ArrayList<BoatType> types, int i) {

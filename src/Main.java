@@ -128,14 +128,10 @@ public class Main {
     }
 
     private static void getSummary(Customer customer, BoatAssembly boatCreate, Scanner input) {
-        try {
-            System.out.println("\n\nBoat Assembly Summary\n----------------------");
-            customer.getCustomerInfo();
-            System.out.println("");
-            boatCreate.boatOfferte(customer);
-        } catch (Exception e) {
-            System.out.println("No created boat found.");
-        }
+        System.out.println("\n\nBoat Assembly Summary\n----------------------");
+        customer.getCustomerInfo();
+        System.out.println("");
+        boatCreate.boatOfferte(customer);
 
         System.out.printf("%n----------------------\nFilled out as intended? (Y/N): ");
         if (input.nextLine().equalsIgnoreCase("y")) {

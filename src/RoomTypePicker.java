@@ -5,25 +5,29 @@ class RoomTypePicker {
     Scanner input = new Scanner(System.in);
 
     public RoomType selectRoom(BoatType boatType) {
-        System.out.printf("\nEnter the Room you want to add: \n\n");
-        ArrayList<RoomType> roomTypes = boatType.getRoomTypes();
+        ArrayList<RoomType> RoomTypes = boatType.getRoomTypes();
 
-        for (RoomType roomType : roomTypes) {
-            System.out.printf(roomType.getNumber() + " - " + roomType.getName() + " $" + roomType.getPrice() + " \n");
-        }
-        System.out.printf(
-            "Type 'done' to finish.\n\n" +
-            "Your input: ");
+        while (true) {
+            System.out.print("\n\n\n\n\n\nRoom\n----------------------\n");
+            for (RoomType RoomType : RoomTypes) {
+                System.out.printf(RoomType.getNumber() + " - " + RoomType.getName() + " $" + RoomType.getPrice() + " \n");
+            }
+            System.out.print("\nPick a Room by entering the corresponding number shown on-screen\nYour input: ");
+            int chosenRoomType;
+            chosenRoomType = input.nextInt();
 
-        int chosenRoomType = input.nextInt();
-
-        for (RoomType roomType : roomTypes) {
-            if (roomType.getNumber() == (chosenRoomType)) {
-                return roomType;
+            if (chosenRoomType < 0 || chosenRoomType > RoomTypes.size()) {
+                input.nextLine();
+                System.out.printf("\nInvalid input. Please choose a number between 1 and %d.%nPress Enter to try again", RoomTypes.size());
+                input.nextLine();
+            } else {
+                for (RoomType RoomType : RoomTypes) {
+                    if (RoomType.getNumber() == (chosenRoomType)) {
+                        return RoomType;
+                    }
+                }
             }
         }
-
-        return null;
     }
 
     public void addRoom(BoatAssembly boatCreate, ArrayList<BoatType> types, int i) {

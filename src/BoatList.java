@@ -296,6 +296,7 @@ class BoatList {
         boatType.AddMotor(AliExpress);
         boatType.AddMotor(Pod_Drive_Evo);
         boatType.AddMotor(Mariner);
+        boatType.AddMotor(Mitek);
         boatType.AddMotor(Honda);
         boatType.AddMotor(Yamaha);
         boatType.AddSteeringWheel(alloy);
@@ -338,6 +339,7 @@ class BoatList {
         boatType.AddMotor(AliExpress);
         boatType.AddMotor(Pod_Drive_Evo);
         boatType.AddMotor(Mariner);
+        boatType.AddMotor(Mitek);
         boatType.AddMotor(Honda);
         boatType.AddMotor(Yamaha);
         boatType.AddSteeringWheel(alloy);
@@ -378,6 +380,7 @@ class BoatList {
         boatType.AddMotor(AliExpress);
         boatType.AddMotor(Pod_Drive_Evo);
         boatType.AddMotor(Mariner);
+        boatType.AddMotor(Mitek);
         boatType.AddMotor(Honda);
         boatType.AddMotor(Yamaha);
         boatType.AddSteeringWheel(alloy);
@@ -418,6 +421,7 @@ class BoatList {
         boatType.AddMotor(AliExpress);
         boatType.AddMotor(Pod_Drive_Evo);
         boatType.AddMotor(Mariner);
+        boatType.AddMotor(Mitek);
         boatType.AddMotor(Honda);
         boatType.AddMotor(Yamaha);
         boatType.AddSteeringWheel(alloy);

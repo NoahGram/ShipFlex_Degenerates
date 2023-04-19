@@ -1,29 +1,34 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class AnchorTypePicker {
     Scanner input = new Scanner(System.in);
 
     public AnchorType selectAnchor(BoatType boatType) {
-        System.out.printf("\nEnter the anchor you want to add: \n\n");
         ArrayList<AnchorType> anchorTypes = boatType.getAnchorTypes();
 
-        for (AnchorType anchorType : anchorTypes) {
-            System.out.printf(anchorType.getNumber() + " - " + anchorType.getName() + " $" + anchorType.getPrice() + " \n");
-        }
-        System.out.printf(
-                "Type 'done' to finish.\n\n" +
-                        "Your input: ");
+        while (true) {
+            System.out.printf("\n\n\n\n\n\nAnchor\n----------------------\n");
+            for (AnchorType anchorType : anchorTypes) {
+                System.out.printf(anchorType.getNumber() + " - " + anchorType.getName() + " $" + anchorType.getPrice() + " \n");
+            }
+            System.out.print("\nPick an Anchor by entering the corresponding number shown on-screen\nYour input: ");
+            int chosenAnchorType;
+            chosenAnchorType = input.nextInt();
 
-        int chosenAnchorType = input.nextInt();
-
-        for (AnchorType anchorType : anchorTypes) {
-            if (anchorType.getNumber() == (chosenAnchorType)) {
-                return anchorType;
+            if (chosenAnchorType < 0 || chosenAnchorType > anchorTypes.size()) {
+                input.nextLine();
+                System.out.printf("\nInvalid input. Please choose a number between 1 and %d.%nPress Enter to try again", anchorTypes.size());
+                input.nextLine();
+            } else {
+                for (AnchorType anchorType : anchorTypes) {
+                    if (anchorType.getNumber() == (chosenAnchorType)) {
+                        return anchorType;
+                    }
+                }
             }
         }
-
-        return null;
     }
 
     public void addAnchor(BoatAssembly boatCreate, ArrayList<BoatType> types, int i) {

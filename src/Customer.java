@@ -19,26 +19,6 @@ public class Customer {
         this.type = type;
     }
 
-    public void setCustomerInfo2() {
-        System.out.println("\nEnter Customer Name: ");
-        String customerName = input.nextLine();
-        this.name = customerName;
-        System.out.println("\nEnter Business Name:");
-        String businessName = input.nextLine();
-        this.businessName = businessName;
-        System.out.printf("\nEnter Customer Type: \n" +
-            "Commercial\n" +
-            "Private\n" +
-            "Goverment\n" +
-            "1 - Commercial\n" +
-            "2 - Private\n" +
-            "3 - Government\n" +
-            "Your input: ");
-        String customerType = input.nextLine();
-        customer.add(new Customer(customerName, businessName, customerType));
-        this.type = customerType;
-    }
-
     public void setCustomerInfo() {
         while (true) {
             System.out.printf("%n%n%n%n%n%n%nAdd Customer%n----------------------%n");
@@ -93,9 +73,7 @@ public class Customer {
             if (customer.get(customer.size()-1).businessName.isEmpty()) {}
             else { System.out.println("Business Name: " + customer.get(customer.size()-1).businessName); }
             System.out.println("Customer Type: " + types.get(Integer.parseInt(customer.get(customer.size()-1).getType())-1));
-        } catch (Exception e) {
-            System.out.println("No customer(s) found.");
-        }
+        } catch (Exception e) { }
     }
 
     public String getType() {

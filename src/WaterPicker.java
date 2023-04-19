@@ -5,25 +5,29 @@ class WaterPicker {
     Scanner input = new Scanner(System.in);
 
     public WaterType selectWater(BoatType boatType) {
-        System.out.printf("\nEnter the Water Equipment do you want to add: \n\n");
-        ArrayList<WaterType> waterTypes = boatType.getWaterTypes();
+        ArrayList<WaterType> WaterTypes = boatType.getWaterTypes();
 
-        for (WaterType waterType : waterTypes) {
-            System.out.printf(waterType.getNumber() + " - " + waterType.getName() + " $" + waterType.getPrice() + " \n");
-        }
-        System.out.printf(
-            "Type 'done' to finish.\n\n" +
-            "Your input: ");
+        while (true) {
+            System.out.print("\n\n\n\n\n\nWater Equipment\n----------------------\n");
+            for (WaterType WaterType : WaterTypes) {
+                System.out.printf(WaterType.getNumber() + " - " + WaterType.getName() + " $" + WaterType.getPrice() + " \n");
+            }
+            System.out.print("\nPick a Water Equipment by entering the corresponding number shown on-screen\nYour input: ");
+            int chosenWaterType;
+            chosenWaterType = input.nextInt();
 
-        int chosenWaterType = input.nextInt();
-
-        for (WaterType waterType : waterTypes) {
-            if (waterType.getNumber() == (chosenWaterType)) {
-                return waterType;
+            if (chosenWaterType < 0 || chosenWaterType > WaterTypes.size()) {
+                input.nextLine();
+                System.out.printf("\nInvalid input. Please choose a number between 1 and %d.%nPress Enter to try again", WaterTypes.size());
+                input.nextLine();
+            } else {
+                for (WaterType WaterType : WaterTypes) {
+                    if (WaterType.getNumber() == (chosenWaterType)) {
+                        return WaterType;
+                    }
+                }
             }
         }
-
-        return null;
     }
 
     public void addWater(BoatAssembly boatCreate, ArrayList<BoatType> types, int i) {

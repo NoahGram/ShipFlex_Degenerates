@@ -19,15 +19,13 @@ class BoatAssembly {
 
     public void boatAssemble() {
         System.out.println("\n\n\n\n\n\nBoat Assembly Program\n----------------------");
-
-        System.out.println("Available boats:");
         for (BoatType boatType : boatList.getBoatTypes()) {
             System.out.printf("%d - %s ($%.2f)\n", boatType.getNumber(), boatType.getName(), boatType.getPrice());
         }
-
-        System.out.print("\nEnter the name of the boat you want to assemble: ");
+        System.out.print("\nPick a Boat by entering the corresponding number shown on-screen\nYour input: ");
         int boatTypeName = input.nextInt();
         input.nextLine();
+
         selectedBoat = null;
         for (BoatType boatType : boatList.getBoatTypes()) {
             if (boatType.getNumber() ==(boatTypeName)) {
@@ -41,11 +39,10 @@ class BoatAssembly {
             return;
         }
 
-        System.out.print("\n\n\n\n\n" + selectedBoat.getBoatType().getName() + " | Boat Type = " + selectedBoat.getBoatType().getType() + "\n----------------------\n");
-
         if (selectedBoat.getBoatType().getType() == "High") {
             boolean addParts = true;
             while (addParts) {
+                System.out.print("\n\n\n\n\n" + selectedBoat.getBoatType().getName() + " | Boat Type = " + selectedBoat.getBoatType().getType() + "\n----------------------\n");
                 System.out.print("1 - Room | Options: Type\n" +
                     "2 - Motor | Options: Engine\n" +
                     "3 - Wheel | Options: Material\n" +
@@ -72,6 +69,7 @@ class BoatAssembly {
         } else if(selectedBoat.getBoatType().getType() == "Medium") {
             boolean addParts = true;
             while (addParts) {
+                System.out.print("\n\n\n\n\n" + selectedBoat.getBoatType().getName() + " | Boat Type = " + selectedBoat.getBoatType().getType() + "\n----------------------\n");
                 System.out.print("1 - Room | Options: Type\n" +
                     "2 - Motor | Options: Engine\n" +
                     "3 - Wheel | Options: Material\n" +
@@ -96,6 +94,7 @@ class BoatAssembly {
         }else if(selectedBoat.getBoatType().getType() == "Low") {
             boolean addParts = true;
             while (addParts) {
+                System.out.print("\n\n\n\n\n" + selectedBoat.getBoatType().getName() + " | Boat Type = " + selectedBoat.getBoatType().getType() + "\n----------------------\n");
                 System.out.print("1 - Motor | Options: Engine\n" +
                     "2 - Wheel | Options: Material\n" +
                     "3 - Color\n" +
@@ -119,7 +118,12 @@ class BoatAssembly {
     }
 
     public void boatOfferte(Customer customer) {
-        selectedBoat.SetCustomer(customer);
-        selectedBoat.boatSummary();
+        try { selectedBoat.SetCustomer(customer);
+        } catch (Exception e) { System.out.println("Unable to assign a Customer to a Boat!"); }
+        try {
+            selectedBoat.boatSummary();
+        } catch (Exception e) {
+            System.out.print("No boat found!");
+        }
     }
 }

@@ -5,25 +5,29 @@ class WheelTypePicker {
     Scanner input = new Scanner(System.in);
 
     public SteeringWheelType selectWheel(BoatType boatType) {
-        System.out.printf("\nEnter the Steering Wheel you want to add: \n\n");
-        ArrayList<SteeringWheelType> wheelTypes = boatType.getWheelTypes();
+        ArrayList<SteeringWheelType> SteeringWheelTypes = boatType.getWheelTypes();
 
-        for (SteeringWheelType wheelType : wheelTypes) {
-            System.out.printf(wheelType.getNumber() + " - " + wheelType.getName() + " $" + wheelType.getPrice() + " \n");
-        }
-        System.out.printf(
-            "Type 'done' to finish.\n\n" +
-            "Your input: ");
+        while (true) {
+            System.out.print("\n\n\n\n\n\nSteering Wheel\n----------------------\n");
+            for (SteeringWheelType SteeringWheelType : SteeringWheelTypes) {
+                System.out.printf(SteeringWheelType.getNumber() + " - " + SteeringWheelType.getName() + " $" + SteeringWheelType.getPrice() + " \n");
+            }
+            System.out.print("\nPick a Steering Wheel by entering the corresponding number shown on-screen\nYour input: ");
+            int chosenSteeringWheelType;
+            chosenSteeringWheelType = input.nextInt();
 
-        int chosenWheelType = input.nextInt();
-
-        for (SteeringWheelType wheelType : wheelTypes) {
-            if (wheelType.getNumber() == (chosenWheelType)) {
-                return wheelType;
+            if (chosenSteeringWheelType < 0 || chosenSteeringWheelType > SteeringWheelTypes.size()) {
+                input.nextLine();
+                System.out.printf("\nInvalid input. Please choose a number between 1 and %d.%nPress Enter to try again", SteeringWheelTypes.size());
+                input.nextLine();
+            } else {
+                for (SteeringWheelType SteeringWheelType : SteeringWheelTypes) {
+                    if (SteeringWheelType.getNumber() == (chosenSteeringWheelType)) {
+                        return SteeringWheelType;
+                    }
+                }
             }
         }
-
-        return null;
     }
 
     public void addWheel (BoatAssembly boatCreate, ArrayList<BoatType> types, int i) {
