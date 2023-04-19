@@ -35,12 +35,14 @@ public class Main {
         }
     }
 
+    // Print de menu voor opties toevoegen
     private static void printAddOptions() {
         System.out.printf("%n%n%n%nAdd Options%n----------------------%n" +
                 " 1. Add option to existing boat" + "%n 2. Add new customer type" +
                 "%n%nSelect an option by choosing the corresponding number%nYour input: ");
     }
 
+    // Print de beginmenu
     private static void printMainMenu() {
         System.out.printf("%n%n%n%nMain menu%n----------------------%n" +
                 " 1. Add Customer%n" + " 2. View Customer%n" + " 3. Boat Assembly Program%n" + " 9. Add Options%n" +
@@ -48,6 +50,7 @@ public class Main {
                 "Your input: ");
     }
 
+    // Voert de menu en functies uit om een nieuwe Customer Type te maken
     public static void addNewCustomer(Customer customer, Scanner input) {
         while (true) {
             System.out.printf("%n%n%n%nAdd New Customer Type%n----------------------%n");
@@ -77,6 +80,7 @@ public class Main {
         }
     }
 
+    // Voert de menu en functies uit om een nieuwe Boot Optie te maken
     private static void addNewOption(BoatAssembly boatCreate, Scanner input, BoatList boat, MotorTypePicker motor, WheelTypePicker wheel, ExhaustTypePicker exhaust, ColorTypePicker color, RoomTypePicker room, WaterPicker water, FlagTypePicker flag, AnchorTypePicker anchor) {
         System.out.printf("%n%n%n%nAdd Option to Existing Boat%n----------------------%n");
 
@@ -86,7 +90,7 @@ public class Main {
             System.out.printf("%d. %s%n", i + 1, types.get(i).getName());
         }
 
-        System.out.print("\n\nSelect an option by choosing the corresponding number\nYour input: ");
+        System.out.print("\nSelect an option by choosing the corresponding number\nYour input: ");
         int chosenBoat = input.nextInt() - 1;
 
         selectOption(types, chosenBoat);
@@ -104,6 +108,7 @@ public class Main {
         }
     }
 
+    // Print de gegevens van de Klant uit
     private static void viewCustomer(Customer customer, Scanner input) {
         System.out.printf("%n%n%n%nCustomer View%n----------------------%n");
         customer.getCustomerInfo();
@@ -111,6 +116,7 @@ public class Main {
         input.nextLine();
     }
 
+    // Print de menu om een boot toe te voegen, te weergeven, en om het programma af te ronden
     private static void boatAssemblyProgram(Customer customer, BoatAssembly boatCreate, Scanner input) {
         boolean bap;
         bap = true;
@@ -127,6 +133,7 @@ public class Main {
         }
     }
 
+    // Weergeeft de Klant en Boot gegevens, de totale prijs
     private static void getSummary(Customer customer, BoatAssembly boatCreate, Scanner input) {
         System.out.println("\n\nBoat Assembly Summary\n----------------------");
         customer.getCustomerInfo();
@@ -139,6 +146,7 @@ public class Main {
         }
     }
 
+    //
     private static void viewBoat(Customer customer, BoatAssembly boatCreate, Scanner input) {
         System.out.printf("%n%n%n%nView Boat%n----------------------%n");
         boatCreate.boatOfferte(customer);
